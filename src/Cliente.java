@@ -44,12 +44,21 @@ public class Cliente extends Pessoa implements IPessoa{
         }
     }
 
+    //remove um cliente do array
     public void removerCliente(int cpf){
         //Esse metodo deu erro no da Maria, testar dps pra ver se no nosso da certo
-        for(Cliente C : Cliente.clientes){
-            if(C.cpf == cpf){
-                Cliente.clientes.remove(clientes.indexOf(C));
+        try {
+            for(Cliente C : Cliente.clientes){
+                if(C.cpf == cpf){
+                    Cliente.clientes.remove(clientes.indexOf(C));
+                    System.out.println("Cliente removido com sucesso");
+                    Cliente.contadorC--;
+                    break;
+                }
             }
+        }catch(IllegalArgumentException e){
+            System.out.println("Um erro aconteceu, tente novamente");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -63,6 +72,14 @@ public class Cliente extends Pessoa implements IPessoa{
         System.out.println("Telefone: " + this.getTelefone());
         System.out.println("Email: " + this.getEmail());
         System.out.println("Num de filmes alugados: " + this.getContadorFilmesAlugados());
+    }
+
+    //exibe todos os clientes
+    public void exibirClientes(){
+        for (Cliente C : clientes){
+            System.out.println("---------------------------------");
+            C.exibir();
+        }
     }
 
     //Getters e Setters:
