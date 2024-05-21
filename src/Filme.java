@@ -11,7 +11,12 @@ public class Filme extends ServicosPrestados{
     }
 
     public void setTitulo(String titulo) {
-        this.titulo = titulo;
+        //FEITO TRATAMENTO DE EXCECOES
+        if(titulo.isEmpty()){
+            throw new IllegalArgumentException("Titulo precisa ser preenchido");
+        } else{
+            this.titulo = titulo;
+        }
     }
 
     public int getMinutos() {
@@ -19,7 +24,12 @@ public class Filme extends ServicosPrestados{
     }
 
     public void setMinutos(int minutos) {
-        this.minutos = minutos;
+        //FEITO TRATAMENTO DE EXCECOES
+        if(minutos<=0){
+            throw new IllegalArgumentException("Duracao em minutos precisa ser preenchido");
+        } else{
+            this.minutos = minutos;
+        }
     }
 
     public int getCodigo() {
@@ -27,7 +37,12 @@ public class Filme extends ServicosPrestados{
     }
 
     public void setCodigo(int codigo) {
-        this.codigo = codigo;
+        //FEITO TRATAMENTO DE EXCECOES
+        if(codigo<0){
+            throw new IllegalArgumentException("Código não pode ser negativo");
+        } else{
+            this.minutos = minutos;
+        }
     }
 
     public double getPreco() {
@@ -35,7 +50,12 @@ public class Filme extends ServicosPrestados{
     }
 
     public void setPreco(double preco) {
-        this.preco = preco;
+        //FEITO TRATAMENTO DE EXCECOES
+        if(preco<0){
+            throw new IllegalArgumentException("Preco não pode ser negativo");
+        } else{
+            this.preco= preco;
+        }
     }
 
     public Filme(String titulo, int minutos, int codigo, double preco) {
