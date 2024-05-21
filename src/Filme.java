@@ -3,6 +3,7 @@ public class Filme extends ServicosPrestados{
     private int minutos;
     private int codigo;
     private double preco;
+    private String descricao;
 
     private static int contadorFilmes = 0;
 

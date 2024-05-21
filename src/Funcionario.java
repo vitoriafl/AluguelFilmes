@@ -106,13 +106,13 @@ public class Funcionario extends Pessoa implements IPessoa
     //Construtores
 
     public Funcionario(String nome, int idade, int cpf, double salario, String email, String endereco, int telefone) {
-        this.nome = nome;
-        this.idade = idade;
-        this.cpf = cpf;
-        this.salario = salario;
-        this.email = email;
-        this.endereco = endereco;
-        this.telefone = telefone;
+        setNome(nome);
+        setIdade(idade);
+        setCpf(cpf);
+        setTelefone(telefone);
+        setEndereco(endereco);
+        setEmail(email);
+        setSalario(salario);
     }
 
     public Funcionario() {
