@@ -3,4 +3,7 @@ public abstract class ServicosPrestados {
 
     //Contador de serviços
     private static int contadorS;
+
+    //Metodos
+    public abstract void exibir();
 }

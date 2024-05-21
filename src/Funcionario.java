@@ -1,4 +1,5 @@
-public class Funcionario implements IPessoa extends Pessoa{
+public class Funcionario extends Pessoa implements IPessoa
+{
 
     //Variaveis
 
@@ -19,7 +20,12 @@ public class Funcionario implements IPessoa extends Pessoa{
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        //FEITO TRATAMENTO DE EXCECOES
+        if(nome.isEmpty()){
+            throw new IllegalArgumentException("Nome precisa ser preenchido");
+        } else{
+            this.nome = nome;
+        }
     }
 
     public int getIdade() {
@@ -27,7 +33,12 @@ public class Funcionario implements IPessoa extends Pessoa{
     }
 
     public void setIdade(int idade) {
-        this.idade = idade;
+        //FEITO TRATAMENTO DE EXCECOES
+        if(idade<=0){
+            throw new IllegalArgumentException("Idade não pode ser negativa e nem zero");
+        } else{
+            this.idade = idade;
+        }
     }
 
     public int getCpf() {
@@ -35,6 +46,7 @@ public class Funcionario implements IPessoa extends Pessoa{
     }
 
     public void setCpf(int cpf) {
+        //FAZER TRATAMENTO DE EXCECOES
         this.cpf = cpf;
     }
 
@@ -59,7 +71,12 @@ public class Funcionario implements IPessoa extends Pessoa{
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        //FEITO TRATAMENTO DE EXCECOES
+        if(email.isEmpty()){
+            throw new IllegalArgumentException("Email precisa ser preenchido");
+        } else{
+            this.email = email;
+        }
     }
 
     public String getEndereco() {
