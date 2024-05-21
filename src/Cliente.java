@@ -12,7 +12,7 @@ public class Cliente extends Pessoa implements IPessoa{
     private String email;
     private static int contadorC; //contador de clientes
 
-    private static ArrayList<Cliente> clientes = new ArrayList<>();
+    private static ArrayList<Cliente> clientes = new ArrayList<>(); //Array que contem todos os cliente cadastrados
 
     //Construtores:
 

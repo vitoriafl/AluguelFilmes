@@ -1,8 +1,20 @@
-public class Filme extends ServicosPrestados{
+import java.util.ArrayList;
+
+public class Filme{
     private String titulo;
     private int minutos;
     private int codigo;
     private double preco;
+    //Variaveis de produto
+    private String nome;
+    private int id;
+    private String descricao;
+    private double preco;
+
+    private static int contadorP=0; //Contador de Produtos
+
+    private static ArrayList<Filme> produtos = new ArrayList<>();
+
 
     private static int contadorFilmes = 0;
 
