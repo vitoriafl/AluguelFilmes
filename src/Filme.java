@@ -1,4 +1,4 @@
-public class Filme extends ServicosPrestados{
+public class Filme{
     private String titulo;
     private int minutos;
     private int codigo;
@@ -66,7 +66,6 @@ public class Filme extends ServicosPrestados{
         this.preco = preco;
     }
 
-    @Override
     public void exibir() {
         System.out.println(this.getTitulo());
         System.out.println(this.getMinutos());
