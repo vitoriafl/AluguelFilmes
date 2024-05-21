@@ -1,20 +1,9 @@
-import java.util.ArrayList;
-
 public class Filme{
     private String titulo;
     private int minutos;
     private int codigo;
     private double preco;
-    //Variaveis de produto
-    private String nome;
-    private int id;
     private String descricao;
-    private double preco;
-
-    private static int contadorP=0; //Contador de Produtos
-
-    private static ArrayList<Filme> produtos = new ArrayList<>();
-
 
     private static int contadorFilmes = 0;
 
@@ -23,7 +12,12 @@ public class Filme{
     }
 
     public void setTitulo(String titulo) {
-        this.titulo = titulo;
+        //FEITO TRATAMENTO DE EXCECOES
+        if(titulo.isEmpty()){
+            throw new IllegalArgumentException("Titulo precisa ser preenchido");
+        } else{
+            this.titulo = titulo;
+        }
     }
 
     public int getMinutos() {
@@ -31,7 +25,12 @@ public class Filme{
     }
 
     public void setMinutos(int minutos) {
-        this.minutos = minutos;
+        //FEITO TRATAMENTO DE EXCECOES
+        if(minutos<=0){
+            throw new IllegalArgumentException("Duracao em minutos precisa ser preenchido");
+        } else{
+            this.minutos = minutos;
+        }
     }
 
     public int getCodigo() {
@@ -39,7 +38,12 @@ public class Filme{
     }
 
     public void setCodigo(int codigo) {
-        this.codigo = codigo;
+        //FEITO TRATAMENTO DE EXCECOES
+        if(codigo<0){
+            throw new IllegalArgumentException("Código não pode ser negativo");
+        } else{
+            this.minutos = minutos;
+        }
     }
 
     public double getPreco() {
@@ -47,7 +51,12 @@ public class Filme{
     }
 
     public void setPreco(double preco) {
-        this.preco = preco;
+        //FEITO TRATAMENTO DE EXCECOES
+        if(preco<0){
+            throw new IllegalArgumentException("Preco não pode ser negativo");
+        } else{
+            this.preco= preco;
+        }
     }
 
     public Filme(String titulo, int minutos, int codigo, double preco) {
@@ -57,7 +66,6 @@ public class Filme{
         this.preco = preco;
     }
 
-    @Override
     public void exibir() {
         System.out.println(this.getTitulo());
         System.out.println(this.getMinutos());

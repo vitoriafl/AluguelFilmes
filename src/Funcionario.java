@@ -9,7 +9,7 @@ public class Funcionario extends Pessoa implements IPessoa
     private double salario;
     private String email;
     private String endereco;
-    private String telefone;
+    private int telefone;
 
     private static int contadorF;
 
@@ -84,27 +84,35 @@ public class Funcionario extends Pessoa implements IPessoa
     }
 
     public void setEndereco(String endereco) {
-        this.endereco = endereco;
+        if(endereco.isEmpty()){
+            throw new IllegalArgumentException("Endereço precisa ser preenchido");
+        } else{
+            this.endereco = endereco;
+        }
     }
 
-    public String getTelefone() {
+    public int getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setTelefone(int telefone) {
+        if(telefone==0 | telefone<0){
+            throw new IllegalArgumentException("Telefone precisa ser maior ou  diferente de zero");
+        } else {
+            this.telefone = telefone;
+        }
     }
 
     //Construtores
 
-    public Funcionario(String nome, int idade, int cpf, double salario, String email, String endereco, String telefone) {
-        this.nome = nome;
-        this.idade = idade;
-        this.cpf = cpf;
-        this.salario = salario;
-        this.email = email;
-        this.endereco = endereco;
-        this.telefone = telefone;
+    public Funcionario(String nome, int idade, int cpf, double salario, String email, String endereco, int telefone) {
+        setNome(nome);
+        setIdade(idade);
+        setCpf(cpf);
+        setTelefone(telefone);
+        setEndereco(endereco);
+        setEmail(email);
+        setSalario(salario);
     }
 
     public Funcionario() {
