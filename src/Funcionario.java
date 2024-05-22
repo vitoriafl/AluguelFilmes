@@ -5,11 +5,11 @@ public class Funcionario extends Pessoa implements IPessoa
 
     private String nome;
     private int idade;
-    private int cpf;
+    private long cpf;
     private double salario;
     private String email;
     private String endereco;
-    private int telefone;
+    private long telefone;
 
     private static int contadorF;
 
@@ -41,7 +41,7 @@ public class Funcionario extends Pessoa implements IPessoa
         }
     }
 
-    public int getCpf() {
+    public long getCpf() {
         return cpf;
     }
 
@@ -91,11 +91,11 @@ public class Funcionario extends Pessoa implements IPessoa
         }
     }
 
-    public int getTelefone() {
+    public long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(long telefone) {
         if(telefone==0 | telefone<0){
             throw new IllegalArgumentException("Telefone precisa ser maior ou  diferente de zero");
         } else {
@@ -105,7 +105,7 @@ public class Funcionario extends Pessoa implements IPessoa
 
     //Construtores
 
-    public Funcionario(String nome, int idade, int cpf, double salario, String email, String endereco, int telefone) {
+    public Funcionario(String nome, int idade, long cpf, double salario, String email, String endereco, long telefone) {
         setNome(nome);
         setIdade(idade);
         setCpf(cpf);
