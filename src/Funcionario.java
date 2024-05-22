@@ -49,7 +49,7 @@ public class Funcionario extends Pessoa implements IPessoa
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(long cpf) {
         //FAZER TRATAMENTO DE EXCECOES
         this.cpf = cpf;
     }
