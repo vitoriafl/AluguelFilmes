@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Filme{
     private String titulo;
     private int minutos;
@@ -6,6 +8,8 @@ public class Filme{
     private String descricao;
 
     private static int contadorFilmes = 0;
+
+    ArrayList<Filme> filmes = new ArrayList<>();
 
     public String getTitulo() {
         return titulo;
@@ -27,7 +31,7 @@ public class Filme{
     public void setMinutos(int minutos) {
         //FEITO TRATAMENTO DE EXCECOES
         if(minutos<=0){
-            throw new IllegalArgumentException("Duracao em minutos precisa ser preenchido");
+            throw new IllegalArgumentException("Duracao em minutos nao pode ser negativo");
         } else{
             this.minutos = minutos;
         }
@@ -59,11 +63,36 @@ public class Filme{
         }
     }
 
-    public Filme(String titulo, int minutos, int codigo, double preco) {
-        this.titulo = titulo;
-        this.minutos = minutos;
-        this.codigo = codigo;
-        this.preco = preco;
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        //FEITO TRATAMENTO DE EXCECOES
+        if(descricao.isEmpty()){
+            throw new IllegalArgumentException("Titulo precisa ser preenchido");
+        } else{
+            this.descricao = descricao;
+        }
+    }
+
+    public static int getContadorFilmes() {
+        return contadorFilmes;
+    }
+
+    public static void setContadorFilmes(int contadorFilmes) {
+        Filme.contadorFilmes = contadorFilmes;
+    }
+
+    public Filme(String titulo, int minutos, int codigo, double preco, String descricao) {
+        setTitulo(titulo);
+        setMinutos(minutos);
+        setCodigo(codigo);
+        setPreco(preco);
+        setDescricao(descricao);
+    }
+
+    public Filme() {
     }
 
     public void exibir() {
@@ -71,5 +100,33 @@ public class Filme{
         System.out.println(this.getMinutos());
         System.out.println(this.getCodigo());
         System.out.println(this.getPreco());
+    }
+
+    public void cadastrarFilme(String titulo, int codigo, int minutos, double preco, String descricao) {
+        try{
+            Filme filme = new Filme(titulo, minutos, codigo, preco, descricao);
+            filmes.add(filme);
+            Filme.contadorFilmes++;
+        }catch (IllegalArgumentException e){
+            System.out.println("Um erro aconteceu, tente novamente");
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void removerFilme(int codigo){
+        //Esse metodo deu erro no da Maria, testar dps pra ver se no nosso da certo ; ok
+        try {
+            for(Filme f: filmes){
+                if(f.getCodigo() == codigo){
+                    filmes.remove(f);
+                    System.out.println("Cliente removido com sucesso");
+                    Filme.contadorFilmes--;
+                    break;
+                }
+            }
+        }catch(IllegalArgumentException e){
+            System.out.println("Um erro aconteceu, tente novamente");
+            System.out.println(e.getMessage());
+        }
     }
 }
