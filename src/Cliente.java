@@ -5,18 +5,18 @@ public class Cliente extends Pessoa implements IPessoa{
 
     private String nome;
     private int idade;
-    private int cpf;
-    private int telefone;
+    private long cpf;
+    private long telefone;
     private int contadorFilmesAlugados;//a ideia é q dps de 5 filmes alugados o sexto é de graça ou algo assim
     private String endereco;
     private String email;
     private static int contadorC; //contador de clientes
 
-    private static ArrayList<Cliente> clientes = new ArrayList<>();
+    private static ArrayList<Cliente> clientes = new ArrayList<>(); //Array que contem todos os cliente cadastrados
 
     //Construtores:
 
-    public Cliente(String nome, int idade, int cpf, int telefone, int contadorFilmesAlugados, String endereco, String email) {
+    public Cliente(String nome, int idade, long cpf, long telefone, int contadorFilmesAlugados, String endereco, String email) {
         //usei set pq ele ja vem com o tratamento de execoes
         setNome(nome);
         setIdade(idade);
@@ -33,7 +33,7 @@ public class Cliente extends Pessoa implements IPessoa{
     //Metodos:
 
     //cadastra o cliente no array
-    public void cadastrarCliente(String nome, int idade, int cpf, int telefone, int contadorFilmesAlugados, String endereco, String email) {
+    public void cadastrarCliente(String nome, int idade, long cpf, long telefone, int contadorFilmesAlugados, String endereco, String email) {
         try{
             Cliente cliente = new Cliente(nome,idade,cpf,telefone,contadorFilmesAlugados,endereco,email);
             clientes.add(cliente);
@@ -45,7 +45,7 @@ public class Cliente extends Pessoa implements IPessoa{
     }
 
     //remove um cliente do array
-    public void removerCliente(int cpf){
+    public void removerCliente(long cpf){
         //Esse metodo deu erro no da Maria, testar dps pra ver se no nosso da certo
         try {
             for(Cliente C : Cliente.clientes){
@@ -109,11 +109,11 @@ public class Cliente extends Pessoa implements IPessoa{
         }
     }
 
-    public int getCpf() {
+    public long getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(long cpf) {
         if(cpf==0 | cpf<0){
             throw new IllegalArgumentException("Cpf precisa ser maior ou diferente de zero");
         } else {
@@ -145,11 +145,11 @@ public class Cliente extends Pessoa implements IPessoa{
         }
     }
 
-    public int getTelefone() {
+    public long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(long telefone) {
         if(telefone==0 | telefone<0){
             throw new IllegalArgumentException("Telefone precisa ser maior ou  diferente de zero");
         } else {
