@@ -6,11 +6,20 @@ public class Main {
         int escolha = -1;
 
         while (escolha != 0){
-            System.out.println("---------Menu--------");
-            System.out.println("1 : Busca");
-            System.out.println("2 : Idades");
-            System.out.println("3 : Preco de produtos");
-            System.out.println("0 : Sair");
+            System.out.println("\n" +
+                    " _______ _________ _        _______  _______  _______ \n" +
+                    "(  ____ \\\\__   __/( \\      (       )(  ___  )(  ___  )\n" +
+                    "| (    \\/   ) (   | (      | () () || (   ) || (   ) |\n" +
+                    "| (__       | |   | |      | || || || (___) || |   | |\n" +
+                    "|  __)      | |   | |      | |(_)| ||  ___  || |   | |\n" +
+                    "| (         | |   | |      | |   | || (   ) || |   | |\n" +
+                    "| )      ___) (___| (____/\\| )   ( || )   ( || (___) |\n" +
+                    "|/       \\_______/(_______/|/     \\||/     \\|(_______)\n" +
+                    "                                                      ");
+            System.out.println("            |  1 : Busca              |");
+            System.out.println("            |  2 : Idades             |");
+            System.out.println("            |  3 : Preco de produtos  |");
+            System.out.println("            |  0 : Sair               |");
             escolha = input.nextInt();
 
             switch (escolha){
