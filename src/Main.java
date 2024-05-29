@@ -90,15 +90,135 @@ public class Main {
                     }
                     break;
                 case 2:
-                    System.out.println("\n----------------------------------------------------\n");
-                    System.out.println();
+                    int escolhaIdade = -1;
+
+                    while (escolhaIdade != 0){
+                        System.out.println("\n----------------------------------------------------\n");
+                        System.out.println("                    Idades\n");
+                        System.out.println("             1 : Cliente mais velho");
+                        System.out.println("             2 : Cliente mais jovem");
+                        System.out.println("      3 : Quantidade de cliente acima de 60 anos");
+                        System.out.println("     4 : Quantidade de clientes abaixo de 18 anos");
+                        System.out.println("           5 : Idade média dos clientes\n");;
+                        System.out.println("                 0 : Voltar\n");
+
+                        //mesma validaçao de la em cima
+                        if (input.hasNextInt()) {
+                            escolhaIdade = input.nextInt();
+                        }else{
+                            escolhaBusca = -1;
+                            input.nextLine();
+                        }
+
+                        switch (escolhaIdade) {
+                            case 1:
+                                System.out.println(" ");
+                                break;
+                            case 2:
+                                System.out.println(" ");
+                                break;
+                            case 3:
+                                System.out.println(" ");
+                                break;
+                            case 4:
+                                System.out.println(" ");
+                                break;
+                            case 5:
+                                System.out.println(" ");
+                                break;
+                            case 0:
+                                System.out.println("\nVoltando ao menu...");
+                                System.out.println("\n----------------------------------------------------\n");
+                                break;
+                            default:
+                                System.out.println("Escolha invalida");
+                                break;
+                        }
+                    }
                     break;
                 case 3:
+                    int escolhaProduto = -1;
+
+                    while (escolhaProduto != 0){
+                        System.out.println("\n----------------------------------------------------\n");
+                        System.out.println("                    Produtos\n");
+                        System.out.println("             1 : Produto mais caro");
+                        System.out.println("            2 : Produto mais barato");
+                        System.out.println("              3 : Média de preços");
+                        System.out.println("       4 : Produtos acima da média de preço\n");
+                        System.out.println("                  0 : Voltar\n");
+
+                        //mesma validaçao de la em cima
+                        if (input.hasNextInt()) {
+                            escolhaProduto = input.nextInt();
+                        }else{
+                            escolhaProduto = -1;
+                            input.nextLine();
+                        }
+
+                        switch (escolhaProduto) {
+                            case 1:
+                                System.out.println(" ");
+                                break;
+                            case 2:
+                                System.out.println(" ");
+                                break;
+                            case 3:
+                                System.out.println(" ");
+                                break;
+                            case 4:
+                                System.out.println(" ");
+                                break;
+                            case 0:
+                                System.out.println("\nVoltando ao menu...");
+                                System.out.println("\n----------------------------------------------------\n");
+                                break;
+                            default:
+                                System.out.println("Escolha invalida");
+                                break;
+                        }
+                    }
+                    break;
+                case 4:
+                    int escolhaPessoa = -1;
+
+                    while (escolhaPessoa != 0){
+                        System.out.println("\n----------------------------------------------------\n");
+                        System.out.println("                  Cadastro de pessoas\n");
+                        System.out.println(" 1 : Cadastrar clientes         2 : Cadastrar Funncionarios\n");
+                        System.out.println("                    0 : Voltar\n");
+
+                        //mesma validaçao de la em cima
+                        if (input.hasNextInt()) {
+                            escolhaPessoa = input.nextInt();
+                        }else{
+                            escolhaPessoa = -1;
+                            input.nextLine();
+                        }
+
+                        switch (escolhaPessoa) {
+                            case 1:
+                                System.out.println(" ");
+                                break;
+                            case 2:
+                                System.out.println(" ");
+                                break;
+                            case 0:
+                                System.out.println("\nVoltando ao menu...");
+                                System.out.println("\n----------------------------------------------------\n");
+                                break;
+                            default:
+                                System.out.println("Escolha invalida");
+                                break;
+                        }
+                    }
+                    break;
+                case 5:
                     System.out.println("\n----------------------------------------------------\n");
+                    System.out.println("                  Cadastro de filmes\n");
                     break;
                 case 0:
-                    System.out.println("\n\n");
-                    System.out.println("Saindo...");
+                    System.out.println("\nSaindo...");
                     //sai do programa
                     System.exit(0);
                     break;

@@ -16,13 +16,13 @@ public class Cliente extends Pessoa implements IPessoa{
 
     //Construtores:
 
-    public Cliente(String nome, int idade, long cpf, long telefone, int contadorFilmesAlugados, String endereco, String email) {
+    public Cliente(String nome, int idade, long cpf, long telefone, String endereco, String email) {
         //usei set pq ele ja vem com o tratamento de execoes
         setNome(nome);
         setIdade(idade);
         setCpf(cpf);
         setTelefone(telefone);
-        setContadorFilmesAlugados(contadorFilmesAlugados);
+        setContadorFilmesAlugados(0);
         setEndereco(endereco);
         setEmail(email);
     }
@@ -33,9 +33,9 @@ public class Cliente extends Pessoa implements IPessoa{
     //Metodos:
 
     //cadastra o cliente no array
-    public void cadastrarCliente(String nome, int idade, long cpf, long telefone, int contadorFilmesAlugados, String endereco, String email) {
+    public void cadastrarCliente(String nome, int idade, long cpf, long telefone, String endereco, String email) {
         try{
-            Cliente cliente = new Cliente(nome,idade,cpf,telefone,contadorFilmesAlugados,endereco,email);
+            Cliente cliente = new Cliente(nome,idade,cpf,telefone,endereco,email);
             clientes.add(cliente);
             Cliente.contadorC++;
         }catch (IllegalArgumentException e){
@@ -85,6 +85,7 @@ public class Cliente extends Pessoa implements IPessoa{
     //Getters e Setters:
 
     //todos ja estao com tratamento de execoes
+
     public String getNome() {
         return nome;
     }

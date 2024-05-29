@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Funcionario extends Pessoa implements IPessoa
 {
-
     //Variaveis
 
     private String nome;
