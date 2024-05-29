@@ -49,6 +49,91 @@ public class Cliente extends Pessoa implements IPessoa{
         return true;
     }
 
+    //busca cliente com menor idade
+    public static Cliente buscaClienteMenorIdade(){
+        int maiorIdade=0;
+        Cliente clienteMaisVelho;
+        for(Cliente c: listClientes){
+            if(c.getIdade()>=maiorIdade){
+                maiorIdade=c.getIdade();
+                clienteMaisVelho=c;
+            }
+        }
+        clienteMaisVelho = new Cliente();
+        return clienteMaisVelho;
+    }
+
+    //busca cliente com maior idade
+    public static Cliente buscaClienteMaiorIdade(){
+        int menorIdade= listClientes.get(0).getIdade();
+        Cliente clienteMaisNovo = new Cliente();
+
+        if (listClientes == null || listClientes.isEmpty()) {
+            return null; // ou lançar uma exceção se preferir
+        }
+
+        for(Cliente c: listClientes){
+            if(c.getIdade()<=menorIdade){
+                menorIdade=c.getIdade();
+                clienteMaisNovo=c;
+            }
+        }
+
+        return clienteMaisNovo;
+    }
+
+    //busca cliente por nome
+    public static Cliente buscaClienteNome(String parteNome){
+        Cliente clienteProcurado;
+        boolean foiAchado = false;
+        parteNome = parteNome.toLowerCase();
+        for(Cliente c: listClientes){
+            if(c.getNome().toLowerCase().contains(parteNome)){
+                clienteProcurado = c;
+                foiAchado = true;
+            }
+        }
+        if (foiAchado) {
+            clienteProcurado = new Cliente();
+            return clienteProcurado;
+        } else {
+            System.out.println("Nenhum cliente com este nome foi encontrado");
+            return null;
+        }
+    }
+
+    //quantidade de cliente >60
+    public static int qtdClientesIdosos(){
+        int qtd = 0;
+        for(Cliente c: listClientes){
+            if(c.getIdade()>=60){
+                qtd++;
+            }
+        }
+        return qtd;
+    }
+
+    //quantidade de cliente <18
+    public static int qtdClientesJovens(){
+        int qtd = 0;
+        for(Cliente c: listClientes){
+            if(c.getIdade()<=18){
+                qtd++;
+            }
+        }
+        return qtd;
+    }
+
+    //idadeMediaClientes
+    public static double mediaIdadeClientes(){
+        double soma = 0;
+        for(Cliente c: listClientes){
+            soma+=c.getIdade();
+        }
+        double media = soma / (listClientes.size());
+        return media;
+    }
+
     //cadastra o cliente no array
     public static void cadastrarCliente(Cliente cliente) {
         try{
@@ -209,81 +294,5 @@ public class Cliente extends Pessoa implements IPessoa{
             //}
         }
     }
-    //busca cliente com menor idade
-    public static Cliente buscaClienteMaiorIdade(){
-        int maiorIdade=0;
-        Cliente clienteMaisVelho = new Cliente();
-        for(Cliente c: listClientes){
-            if(c.getIdade()>=maiorIdade){
-                maiorIdade=c.getIdade();
-                clienteMaisVelho=c;
-            }
-        }
 
-        return clienteMaisVelho;
-    }
-
-    //busca cliente com maior idade
-    public static Cliente buscaClienteMenorIdade(){
-        int menorIdade= listClientes.get(0).getIdade();
-        Cliente clienteMaisNovo = new Cliente();
-
-        if (listClientes == null || listClientes.isEmpty()) {
-            return null; // ou lançar uma exceção se preferir
-        }
-
-        for(Cliente c: listClientes){
-            if(c.getIdade()<=menorIdade){
-                menorIdade=c.getIdade();
-                clienteMaisNovo=c;
-            }
-        }
-
-        return clienteMaisNovo;
-    }
-
-    //busca cliente por nome
-    public static Cliente buscaClienteNome(String parteNome){
-        Cliente clienteProcurado = new Cliente();
-        parteNome = parteNome.toLowerCase();
-        for(Cliente c: listClientes){
-            if(c.getNome().toLowerCase().contains(parteNome)){
-                clienteProcurado = c;
-            }
-        }
-
-        return clienteProcurado;
-    }
-
-    //quantidade de cliente >60
-    public static int qtdClientesIdosos(){
-        int qtd = 0;
-        for(Cliente c: listClientes){
-            if(c.getIdade()>=60){
-                qtd++;
-            }
-        }
-        return qtd;
-    }
-
-    //quantidade de cliente <18
-    public static int qtdClientesJovens(){
-        int qtd = 0;
-        for(Cliente c: listClientes){
-            if(c.getIdade()<=18){
-                qtd++;
-            }
-        }
-        return qtd;
-    }
-
-    //idadeMediaClientes
-    public static double mediaIdadeClientes(){
-        double soma = 0;
-        for(Cliente c: listClientes){
-            soma+=c.getIdade();
-        }
-        double media = soma / (listClientes.size());
-        return media;
-    }
 }

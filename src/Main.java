@@ -128,7 +128,6 @@ public class Main {
 
                         switch (escolhaBusca) {
                             case 1:
-                                System.out.println("busca de clientes");
                                 int escolha2 = -1;
 
                                 while (escolha2 != 0) {
