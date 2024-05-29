@@ -163,14 +163,13 @@ public class Funcionario extends Pessoa implements IPessoa
 
     //busca funcionario por nome
     public static Funcionario buscaFuncionarioNome(String parteNome){
-        Funcionario funcionarioProcurado;
+        Funcionario funcionarioProcurado = new Funcionario();
         parteNome = parteNome.toLowerCase();
-        for(Funcionario f: listFuncionarios){
-            if(f.getNome().toLowerCase().contains(parteNome)){
+        for(Funcionario f: listFuncionarios) {
+            if (f.getNome().toLowerCase().contains(parteNome)) {
                 funcionarioProcurado = f;
             }
         }
-        funcionarioProcurado = new Funcionario();
         return funcionarioProcurado;
     }
 }

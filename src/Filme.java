@@ -83,7 +83,7 @@ public class Filme{
     }
 
     public static void setContadorFilmes(int contadorFilmes) {
-        Filme.contadorFilmes = contadorFilmes;
+        Filme.contadorFilmes = listFilmes.size();
     }
 
     public Filme(String titulo, int minutos, int codigo, double preco, String descricao) {
@@ -92,6 +92,7 @@ public class Filme{
         setCodigo(codigo);
         setPreco(preco);
         setDescricao(descricao);
+
     }
 
     public Filme() {
@@ -134,32 +135,30 @@ public class Filme{
 
     //busca filme por nome
     public static Filme buscaFilmeNome(String parteNome){
-        Filme filmeProcurado;
+        Filme filmeProcurado = new Filme();
         parteNome = parteNome.toLowerCase();
         for(Filme f: listFilmes){
             if(f.getTitulo().toLowerCase().contains(parteNome)){
                 filmeProcurado = f;
             }
         }
-        filmeProcurado = new Filme();
         return filmeProcurado;
     }
 
     //busca filme por descricao
     public static Filme buscaFilmeDesc(String parteDesc){
-        Filme filmeProcurado;
+        Filme filmeProcurado  = new Filme();;
         parteDesc = parteDesc.toLowerCase();
         for(Filme f: listFilmes){
             if(f.getDescricao().toLowerCase().contains(parteDesc)){
                 filmeProcurado = f;
             }
         }
-        filmeProcurado = new Filme();
         return filmeProcurado;
     }
 
     //busca filme mais barato
-    public static Filme buscaFilmeBarato(ArrayList<Filme> listFilmes) {
+    public static Filme buscaFilmeBarato() {
         if (listFilmes == null || listFilmes.isEmpty()) {
             return null; // ou lançar uma exceção se preferir
         }
@@ -169,7 +168,7 @@ public class Filme{
     }
 
     //busca filme mais caro
-    public static Filme buscaFilmeCaro(ArrayList<Filme> listFilmes) {
+    public static Filme buscaFilmeCaro() {
         if (listFilmes == null || listFilmes.isEmpty()) {
             return null; // ou lançar uma exceção se preferir
         }
@@ -179,7 +178,7 @@ public class Filme{
     }
 
     //listar filmes do mais barato ao mais caro
-    public static ArrayList<Filme> listarFilmesPorPrecoCrescente(ArrayList<Filme> listFilmes) {
+    public static ArrayList<Filme> listarFilmesPorPrecoCrescente() {
         ArrayList<Filme> filmesOrdenados = new ArrayList<>(listFilmes);
         filmesOrdenados.sort(Comparator.comparingDouble(Filme::getPreco));
         return filmesOrdenados;

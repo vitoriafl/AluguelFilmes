@@ -210,21 +210,21 @@ public class Cliente extends Pessoa implements IPessoa{
         }
     }
     //busca cliente com menor idade
-    public static Cliente buscaClienteMenorIdade(){
+    public static Cliente buscaClienteMaiorIdade(){
         int maiorIdade=0;
-        Cliente clienteMaisVelho;
+        Cliente clienteMaisVelho = new Cliente();
         for(Cliente c: listClientes){
             if(c.getIdade()>=maiorIdade){
                 maiorIdade=c.getIdade();
                 clienteMaisVelho=c;
             }
         }
-        clienteMaisVelho = new Cliente();
+
         return clienteMaisVelho;
     }
 
     //busca cliente com maior idade
-    public static Cliente buscaClienteMaiorIdade(){
+    public static Cliente buscaClienteMenorIdade(){
         int menorIdade= listClientes.get(0).getIdade();
         Cliente clienteMaisNovo = new Cliente();
 
@@ -244,14 +244,14 @@ public class Cliente extends Pessoa implements IPessoa{
 
     //busca cliente por nome
     public static Cliente buscaClienteNome(String parteNome){
-        Cliente clienteProcurado;
+        Cliente clienteProcurado = new Cliente();
         parteNome = parteNome.toLowerCase();
         for(Cliente c: listClientes){
             if(c.getNome().toLowerCase().contains(parteNome)){
                 clienteProcurado = c;
             }
         }
-        clienteProcurado = new Cliente();
+
         return clienteProcurado;
     }
 
