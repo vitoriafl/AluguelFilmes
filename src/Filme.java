@@ -9,7 +9,7 @@ public class Filme{
 
     private static int contadorFilmes = 0;
 
-    ArrayList<Filme> filmes = new ArrayList<>();
+    private static ArrayList<Filme> filmes = new ArrayList<>();
 
     public String getTitulo() {
         return titulo;

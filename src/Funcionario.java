@@ -15,7 +15,7 @@ public class Funcionario extends Pessoa implements IPessoa
 
     private static int contadorF;
 
-    ArrayList<Funcionario> funcionarios = new ArrayList<>();
+    private static ArrayList<Funcionario> funcionarios = new ArrayList<>();
 
     //Getters e setters
 
