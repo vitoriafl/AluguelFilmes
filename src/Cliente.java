@@ -207,4 +207,44 @@ public class Cliente extends Pessoa implements IPessoa{
             //}
         }
     }
+    //busca cliente com menor idade
+    public static Cliente buscaClienteMenorIdade(){
+        int maiorIdade=0;
+        Cliente clienteMaisVelho;
+        for(Cliente c: listClientes){
+            if(c.getIdade()>=maiorIdade){
+                maiorIdade=c.getIdade();
+                clienteMaisVelho=c;
+            }
+        }
+        clienteMaisVelho = new Cliente();
+        return clienteMaisVelho;
+    }
+
+    //busca cliente com maior idade
+    public static Cliente buscaClienteMaiorIdade(){
+        int menorIdade= listClientes.get(0).getIdade();
+        Cliente clienteMaisNovo;
+        for(Cliente c: listClientes){
+            if(c.getIdade()<=menorIdade){
+                menorIdade=c.getIdade();
+                clienteMaisNovo=c;
+            }
+        }
+        clienteMaisNovo = new Cliente();
+        return clienteMaisNovo;
+    }
+
+//busca cliente por nome
+    public static Cliente buscaClienteNome(String parteNome){
+        Cliente clienteProcurado;
+        parteNome = parteNome.toLowerCase();
+        for(Cliente c: listClientes){
+            if(c.getNome().toLowerCase().contains(parteNome)){
+                clienteProcurado = c;
+            }
+        }
+        clienteProcurado = new Cliente();
+        return clienteProcurado;
+    }
 }

@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Filme{
     private String titulo;
@@ -128,5 +130,68 @@ public class Filme{
             System.out.println("Um erro aconteceu, tente novamente");
             System.out.println(e.getMessage());
         }
+    }
+
+    //busca filme por nome
+    public static Filme buscaFilmeNome(String parteNome){
+        Filme filmeProcurado;
+        parteNome = parteNome.toLowerCase();
+        for(Filme f: listFilmes){
+            if(f.getTitulo().toLowerCase().contains(parteNome)){
+                filmeProcurado = f;
+            }
+        }
+        filmeProcurado = new Filme();
+        return filmeProcurado;
+    }
+
+    //busca filme por descricao
+    public static Filme buscaFilmeDesc(String parteDesc){
+        Filme filmeProcurado;
+        parteDesc = parteDesc.toLowerCase();
+        for(Filme f: listFilmes){
+            if(f.getDescricao().toLowerCase().contains(parteDesc)){
+                filmeProcurado = f;
+            }
+        }
+        filmeProcurado = new Filme();
+        return filmeProcurado;
+    }
+
+    //busca filme mais barato (inutil pelos codigos seguintes)
+    public static Filme buscaFilmeBarato(ArrayList<Filme> listFilmes) {
+        if (listFilmes == null || listFilmes.isEmpty()) {
+            return null; // ou lançar uma exceção se preferir
+        }
+
+        Filme filmeMaisBarato = Collections.min(listFilmes, Comparator.comparingDouble(Filme::getPreco));
+        return filmeMaisBarato;
+    }
+
+    //listar filmes do mais barato ao mais caro
+    public static ArrayList<Filme> listarFilmesPorPrecoCrescente(ArrayList<Filme> listFilmes) {
+        ArrayList<Filme> filmesOrdenados = new ArrayList<>(listFilmes);
+        filmesOrdenados.sort(Comparator.comparingDouble(Filme::getPreco));
+        return filmesOrdenados;
+    }
+
+    //listar filmes do mais caro ao mais barato
+    public static ArrayList<Filme> listarFilmesPorPrecoDecrescente(ArrayList<Filme> listFilmes) {
+        ArrayList<Filme> filmesOrdenados = new ArrayList<>(listFilmes);
+        filmesOrdenados.sort(Comparator.comparingDouble(Filme::getPreco).reversed());
+        return filmesOrdenados;
+    }
+
+    public static Filme buscaFilmeCodigo(int codigo){
+        Filme filmeProcurado = new Filme();
+        for(Filme f: listFilmes){
+            if(f.getCodigo()==codigo){
+                filmeProcurado = f;
+            }
+        }
+        if(filmeProcurado == null){
+            System.out.printf("Filme não encontrado");
+        }
+         return filmeProcurado;
     }
 }
