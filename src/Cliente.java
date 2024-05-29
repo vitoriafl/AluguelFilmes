@@ -12,7 +12,7 @@ public class Cliente extends Pessoa implements IPessoa{
     private String email;
     private static int contadorC; //contador de clientes
 
-    private static ArrayList<Cliente> clientes = new ArrayList<>(); //Array que contem todos os cliente cadastrados
+    public static ArrayList<Cliente> listClientes = new ArrayList<>(); //Array que contem todos os cliente cadastrados
 
     //Construtores:
 
@@ -32,11 +32,26 @@ public class Cliente extends Pessoa implements IPessoa{
 
     //Metodos:
 
+    //pra ajudar a validaçao de strings
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+            int i =  Integer.parseInt(strNum);
+            float f = Float.parseFloat(strNum);
+            long l = Long.parseLong(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
     //cadastra o cliente no array
-    public void cadastrarCliente(String nome, int idade, long cpf, long telefone, String endereco, String email) {
+    public static void cadastrarCliente(Cliente cliente) {
         try{
-            Cliente cliente = new Cliente(nome,idade,cpf,telefone,endereco,email);
-            clientes.add(cliente);
+            listClientes.add(cliente);
             Cliente.contadorC++;
         }catch (IllegalArgumentException e){
             System.out.println("Um erro aconteceu, tente novamente");
@@ -45,12 +60,12 @@ public class Cliente extends Pessoa implements IPessoa{
     }
 
     //remove um cliente do array
-    public void removerCliente(long cpf){
+    public static void removerCliente(long cpf){
         //Esse metodo deu erro no da Maria, testar dps pra ver se no nosso da certo
         try {
-            for(Cliente C : Cliente.clientes){
+            for(Cliente C : Cliente.listClientes){
                 if(C.cpf == cpf){
-                    Cliente.clientes.remove(clientes.indexOf(C));
+                    Cliente.listClientes.remove(listClientes.indexOf(C));
                     System.out.println("Cliente removido com sucesso");
                     Cliente.contadorC--;
                     break;
@@ -76,7 +91,7 @@ public class Cliente extends Pessoa implements IPessoa{
 
     //exibe todos os clientes
     public void exibirClientes(){
-        for (Cliente C : clientes){
+        for (Cliente C : listClientes){
             System.out.println("---------------------------------");
             C.exibir();
         }
@@ -93,7 +108,9 @@ public class Cliente extends Pessoa implements IPessoa{
     public void setNome(String nome) {
         if(nome.isEmpty()){
             throw new IllegalArgumentException("Nome precisa ser preenchido");
-        } else{
+        } else if (isNumeric(nome)){
+            throw new IllegalArgumentException("Nome não pode ser numero");
+        } else {
             this.nome = nome;
         }
     }
@@ -165,7 +182,9 @@ public class Cliente extends Pessoa implements IPessoa{
     public void setEndereco(String endereco) {
         if(endereco.isEmpty()){
             throw new IllegalArgumentException("Endereço precisa ser preenchido");
-        } else{
+        } else if (isNumeric(endereco)){
+            throw new IllegalArgumentException("Endereço não pode ser numero");
+        } else {
             this.endereco = endereco;
         }
     }
@@ -176,9 +195,16 @@ public class Cliente extends Pessoa implements IPessoa{
 
     public void setEmail(String email) {
         if(email.isEmpty()){
+            // tira esses throws
             throw new IllegalArgumentException("Email precisa ser preenchido");
+        } else if (isNumeric(email)){
+            throw new IllegalArgumentException("Email não pode ser numero");
         } else{
+            //try{
             this.email = email;
+            //} catch (e){
+            //sout de cria
+            //}
         }
     }
 }

@@ -14,7 +14,7 @@ public class Funcionario extends Pessoa implements IPessoa
 
     private static int contadorF;
 
-    private static ArrayList<Funcionario> funcionarios = new ArrayList<>();
+    private static ArrayList<Funcionario> listFuncionarios = new ArrayList<>();
 
     //Getters e setters
 
@@ -133,10 +133,10 @@ public class Funcionario extends Pessoa implements IPessoa
         System.out.println(this.getEndereco());
     }
 
-    public void cadastrarFuncionario(String nome, int idade, int cpf, double salario, String email, String endereco, int telefone) {
+    public static void cadastrarFuncionario(String nome, int idade, int cpf, double salario, String email, String endereco, int telefone) {
         try{
             Funcionario funcionario = new Funcionario(nome,idade,cpf,salario,email,endereco,telefone);
-            funcionarios.add(funcionario);
+            listFuncionarios.add(funcionario);
             Funcionario.contadorF++;
         }catch (IllegalArgumentException e){
             System.out.println("Um erro aconteceu, tente novamente");
@@ -144,12 +144,12 @@ public class Funcionario extends Pessoa implements IPessoa
         }
     }
 
-    public void removerFuncionario(int cpf){
+    public static void removerFuncionario(int cpf){
         //Esse metodo deu erro no da Maria, testar dps pra ver se no nosso da certo
         try {
-            for(Funcionario f : funcionarios){
+            for(Funcionario f : listFuncionarios){
                 if(f.getCpf() == cpf ){
-                    funcionarios.remove(f);
+                    listFuncionarios.remove(f);
                     System.out.println("Funcionario removido com sucesso");
                     Funcionario.contadorF--;
                     break;

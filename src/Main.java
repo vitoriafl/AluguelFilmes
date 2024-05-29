@@ -1,9 +1,13 @@
+import jdk.jshell.Snippet;
+
 import java.util.Scanner;
 
 public class Main {
     private static Scanner input =new Scanner(System.in);
+    Cliente c = new Cliente();
 
     public static void main(String[] args) {
+        Main o = new Main(); //instancia necessatia para usar metodos da classe main
         int escolha = -1;
 
         //o while(true) é só um loop infinito, ai o usuario sai usando o System.exit() no lugar de quebrar o loop
@@ -29,7 +33,8 @@ public class Main {
             //o hasNextInt vê se tem algum int disponivel pra n dar mismatchExeption
             if (input.hasNextInt()) {
                 escolha = input.nextInt();
-            }else{
+            }
+            else{
                 //ai aqui ele só reseta a variavel
                 escolha = -1;
                 //e isso aqui É CRUCIAL
@@ -191,14 +196,18 @@ public class Main {
                         //mesma validaçao de la em cima
                         if (input.hasNextInt()) {
                             escolhaPessoa = input.nextInt();
-                        }else{
+                        }
+                        else{
                             escolhaPessoa = -1;
                             input.nextLine();
                         }
 
                         switch (escolhaPessoa) {
                             case 1:
-                                System.out.println(" ");
+                                System.out.println("\n----------------------------------------------------\n");
+                                System.out.println("                  Cadastro de clientes\n");
+                                o.cadastroVariaveisCliente();
+                                System.out.println("\n----------------------------------------------------\n");
                                 break;
                             case 2:
                                 System.out.println(" ");
@@ -228,6 +237,87 @@ public class Main {
                     break;
             }
         }
+    }
 
+    public void cadastroVariaveisCliente(){
+        Cliente cliente = new Cliente();
+        Scanner variaveis = new Scanner(System.in);
+
+        //to com preguiça de explicar isso, eu acretido na sua capacidade de entender vih
+        //eu mudei o metodo de cadastrar cliente pra isso, mas n mudei os de funcionario etc
+
+        String nome = "abcde";
+        while(nome.equals("abcde")){
+            System.out.println("insira nome: ");
+            if(variaveis.hasNext("[1234567890]")){
+                System.out.println("amiginho isso não é seu nome não");
+                variaveis.next();
+                continue;
+            }else if(variaveis.hasNextLine()){
+                nome = variaveis.nextLine();
+                cliente.setNome(nome);
+            }
+        }
+
+        String endereco = "abcde";
+        while(endereco.equals("abcde")){
+            System.out.println("insira endereco: ");
+            if(variaveis.hasNext("[1234567890]")){
+                System.out.println("amiginho isso não é seu endereco não");
+                variaveis.next();
+                continue;
+            }else if(variaveis.hasNextLine()){
+                endereco = variaveis.nextLine();
+                cliente.setEndereco(endereco);
+            }
+        }
+
+        String email = "abcde";
+        while(email.equals("abcde")){
+            System.out.println("insira email: ");
+            if(variaveis.hasNext("[1234567890]")){
+                System.out.println("amiginho isso não é seu email não");
+                variaveis.next();
+                continue;
+            }else if(variaveis.hasNextLine()){
+                email = variaveis.nextLine();
+                cliente.setEmail(email);
+            }
+        }
+
+        int idade = -1;
+        while(idade == -1){
+            System.out.println("insira idade: ");
+            if(variaveis.hasNextInt()){
+                idade = variaveis.nextInt();
+                cliente.setIdade(idade);
+            } else {
+                variaveis.next();
+            }
+        }
+
+        long cpf = -1;
+        while(cpf == -1){
+            System.out.println("insira cpf: ");
+            if(variaveis.hasNextLong()){
+                cpf = variaveis.nextLong();
+                cliente.setCpf(cpf);
+            } else {
+                variaveis.next();
+            }
+        }
+
+        long telefone = -1;
+        while(telefone == -1){
+            System.out.println("insira telefone: ");
+            if(variaveis.hasNextLong()){
+                telefone = variaveis.nextLong();
+                cliente.setTelefone(telefone);
+            } else {
+                variaveis.next();
+            }
+        }
+
+        Cliente.cadastrarCliente(cliente);
     }
 }

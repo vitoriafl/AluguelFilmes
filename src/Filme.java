@@ -9,7 +9,7 @@ public class Filme{
 
     private static int contadorFilmes = 0;
 
-    private static ArrayList<Filme> filmes = new ArrayList<>();
+    private static ArrayList<Filme> listFilmes = new ArrayList<>();
 
     public String getTitulo() {
         return titulo;
@@ -102,10 +102,10 @@ public class Filme{
         System.out.println(this.getPreco());
     }
 
-    public void cadastrarFilme(String titulo, int codigo, int minutos, double preco, String descricao) {
+    public static void cadastrarFilme(String titulo, int codigo, int minutos, double preco, String descricao) {
         try{
             Filme filme = new Filme(titulo, minutos, codigo, preco, descricao);
-            filmes.add(filme);
+            listFilmes.add(filme);
             Filme.contadorFilmes++;
         }catch (IllegalArgumentException e){
             System.out.println("Um erro aconteceu, tente novamente");
@@ -113,12 +113,12 @@ public class Filme{
         }
     }
 
-    public void removerFilme(int codigo){
+    public static void removerFilme(int codigo){
         //Esse metodo deu erro no da Maria, testar dps pra ver se no nosso da certo ; ok
         try {
-            for(Filme f: filmes){
+            for(Filme f: listFilmes){
                 if(f.getCodigo() == codigo){
-                    filmes.remove(f);
+                    listFilmes.remove(f);
                     System.out.println("Cliente removido com sucesso");
                     Filme.contadorFilmes--;
                     break;
