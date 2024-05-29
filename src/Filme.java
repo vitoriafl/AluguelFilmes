@@ -158,7 +158,7 @@ public class Filme{
         return filmeProcurado;
     }
 
-    //busca filme mais barato (inutil pelos codigos seguintes)
+    //busca filme mais barato
     public static Filme buscaFilmeBarato(ArrayList<Filme> listFilmes) {
         if (listFilmes == null || listFilmes.isEmpty()) {
             return null; // ou lançar uma exceção se preferir
@@ -166,6 +166,16 @@ public class Filme{
 
         Filme filmeMaisBarato = Collections.min(listFilmes, Comparator.comparingDouble(Filme::getPreco));
         return filmeMaisBarato;
+    }
+
+    //busca filme mais caro
+    public static Filme buscaFilmeCaro(ArrayList<Filme> listFilmes) {
+        if (listFilmes == null || listFilmes.isEmpty()) {
+            return null; // ou lançar uma exceção se preferir
+        }
+
+        Filme filmeMaisCaro= Collections.max(listFilmes, Comparator.comparingDouble(Filme::getPreco));
+        return filmeMaisCaro;
     }
 
     //listar filmes do mais barato ao mais caro
@@ -182,6 +192,7 @@ public class Filme{
         return filmesOrdenados;
     }
 
+    //busca filme por codigo
     public static Filme buscaFilmeCodigo(int codigo){
         Filme filmeProcurado = new Filme();
         for(Filme f: listFilmes){
@@ -194,4 +205,27 @@ public class Filme{
         }
          return filmeProcurado;
     }
+
+
+    //media dos preços dos filmes
+    public static double mediaPrecoFilmes(){
+        double soma = 0;
+        for(Filme f: listFilmes){
+            soma+=f.getPreco();
+        }
+        double media = soma / (listFilmes.size());
+        return media;
+    }
+
+    //quantidade de filmes com preço acima da media
+    public static int qtdFilmesAcimaDaM(){
+        int qtd = 0;
+        for(Filme f: listFilmes){
+            if(f.getPreco()>mediaPrecoFilmes()){
+                qtd++;
+            }
+        }
+        return qtd;
+    }
+
 }

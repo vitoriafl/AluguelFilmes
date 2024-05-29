@@ -6,6 +6,20 @@ public class Main {
     private static Scanner input =new Scanner(System.in);
     Cliente c = new Cliente();
 
+    //cadastrando clientes p nao nos matarmos
+    Cliente c1 = new Cliente("Ana", 65, 1001001001, 1999901, "Rua 1", "ana@gmail.com");
+    Cliente c2 = new Cliente("Bernardo", 34, 1001001002, 1999902, "Rua 2", "bernardo@gmail.com");
+    Cliente c3 = new Cliente("Carlos", 45, 1001001003L, 1999903, "Rua 3", "carlos@gmail.com");
+    Cliente c4 = new Cliente("Daniela", 28, 1001001004, 1999904, "Rua 4", "daniela@gmail.com");
+    Cliente c5 = new Cliente("Eduardo", 55, 1001001005, 1999905, "Rua 5", "eduardo@gmail.com");
+    Cliente c6 = new Cliente("Fernanda", 22, 1001001006, 1999906, "Rua 6", "fernanda@gmail.com");
+    Cliente c7 = new Cliente("Gabriel", 39, 1001001007, 1999907, "Rua 7", "gabriel@gmail.com");
+    Cliente c8 = new Cliente("Helena", 31, 1001001008, 1999908, "Rua 8", "helena@gmail.com");
+    Cliente c9 = new Cliente("Igor", 27, 1001001009, 1999909, "Rua 9", "igor@gmail.com");
+    Cliente c10 = new Cliente("Juliana", 52, 1001001010, 1999910, "Rua 10", "juliana@gmail.com");
+    Cliente c11 = new Cliente("Kleber", 60, 1001001011, 1999911, "Rua 11", "kleber@gmail.com");
+    Cliente c12 = new Cliente("Larissa", 33, 1001001012 ,1999912, "Rua 12", "larissa@gmail.com");
+
     public static void main(String[] args) {
         Main o = new Main(); //instancia necessatia para usar metodos da classe main
         int escolha = -1;
@@ -118,7 +132,13 @@ public class Main {
 
                         switch (escolhaIdade) {
                             case 1:
-                                System.out.println(" ");
+                                try {
+                                    Cliente clienteVelho = new Cliente();
+                                    clienteVelho = Cliente.buscaClienteMaiorIdade();
+                                    clienteVelho.exibir();
+                                }catch (Exception e){
+                                    System.out.println("Erro");
+                                }
                                 break;
                             case 2:
                                 System.out.println(" ");
