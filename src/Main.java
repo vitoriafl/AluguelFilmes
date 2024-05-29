@@ -68,6 +68,7 @@ public class Main {
         int escolha = -1;
 
         //o while(true) é só um loop infinito, ai o usuario sai usando o System.exit() no lugar de quebrar o loop
+        //obs: ficou lindao esse filmao ok
         while (true) {
             System.out.println("\n" +
                     " _______ _________ _        _______  _______  _______ \n" +
@@ -104,7 +105,6 @@ public class Main {
                 case 1:
                     //toda a estrutura ta pronta só falta fazer os metodos
                     //dps eu qro destrinchar tudo isso aqui dps, pq esse codigo ta mto feioooo senhor amado
-                    //eu vih, comecei a fazer o sistema de busca na classe cliente
                     int escolhaBusca = -1;
 
                     //loop normal msm, pra n sair da opçao de busca
@@ -188,6 +188,7 @@ public class Main {
                                         input.nextLine();
                                     }
 
+                                    //Mano eu criei tudo "certinho" os metodos nas classe pra filtrar e tal mas acho q algo ta dando ruim e nao sei oq eh, se conseguir conserta
                                     switch (escolha) {
                                         case 1:
                                             try {
@@ -263,6 +264,7 @@ public class Main {
 
                     }
                     break;
+                    // o case 2 parece tar tudo suave, se quiser melhora oq quiser
                 case 2:
                     int escolhaIdade = -1;
 
@@ -322,6 +324,7 @@ public class Main {
                         }
                     }
                     break;
+                    // o case 3 parece ta suave tbm, só q da pra melhorar a exibiçao só q to cansada
                 case 3:
                     int escolhaProduto = -1;
 
@@ -386,6 +389,7 @@ public class Main {
                         }
                     }
                     break;
+                    // esse case 4 da uma verificada se ta passando algum tipo de variavel anormal no scan, n conferi
                 case 4:
                     int escolhaPessoa = -1;
 
@@ -424,6 +428,7 @@ public class Main {
                         }
                     }
                     break;
+                    //mesma fita do caso 4
                 case 5:
                     System.out.println("\n----------------------------------------------------\n");
                     System.out.println("                  Cadastro de filmes\n");

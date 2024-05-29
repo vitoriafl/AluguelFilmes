@@ -163,7 +163,14 @@ public class Filme{
             return null; // ou lançar uma exceção se preferir
         }
 
-        Filme filmeMaisBarato = Collections.min(listFilmes, Comparator.comparingDouble(Filme::getPreco));
+        //Descobri q da p fazer essa linha debaixo mas n to afim de usar pq mt dificil as sintaxes e explicar fica paia
+        //Filme filmeMaisBarato = Collections.min(listFilmes, Comparator.comparingDouble(Filme::getPreco));
+        Filme filmeMaisBarato = listFilmes.get(0);
+        for (Filme filme : listFilmes) {
+            if (filme.getPreco() <= filmeMaisBarato.getPreco()) {
+                filmeMaisBarato = filme;
+            }
+        }
         return filmeMaisBarato;
     }
 
@@ -173,10 +180,17 @@ public class Filme{
             return null; // ou lançar uma exceção se preferir
         }
 
-        Filme filmeMaisCaro= Collections.max(listFilmes, Comparator.comparingDouble(Filme::getPreco));
+        //Filme filmeMaisCaro= Collections.max(listFilmes, Comparator.comparingDouble(Filme::getPreco));
+        Filme filmeMaisCaro = listFilmes.getFirst();
+        for (Filme filme : listFilmes) {
+            if (filme.getPreco() > filmeMaisCaro.getPreco()) {
+                filmeMaisCaro = filme;
+            }
+        }
         return filmeMaisCaro;
     }
 
+    // esses 2 metodo debaixo eu fiz por graça mesmo, se quiser pode implementar eles, mas sla
     //listar filmes do mais barato ao mais caro
     public static ArrayList<Filme> listarFilmesPorPrecoCrescente() {
         ArrayList<Filme> filmesOrdenados = new ArrayList<>(listFilmes);
