@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class Filme{
@@ -92,7 +91,7 @@ public class Filme{
         setCodigo(codigo);
         setPreco(preco);
         setDescricao(descricao);
-
+        cadastrarFilme(this);
     }
 
     public Filme() {
@@ -105,11 +104,11 @@ public class Filme{
         System.out.println(this.getPreco());
     }
 
-    public static void cadastrarFilme(String titulo, int codigo, int minutos, double preco, String descricao) {
+    public static void cadastrarFilme(Filme filme) {
         try{
-            Filme filme = new Filme(titulo, minutos, codigo, preco, descricao);
+            //Filme filme = new Filme(titulo, minutos, codigo, preco, descricao);
             listFilmes.add(filme);
-            Filme.contadorFilmes++;
+            Filme.contadorFilmes = listFilmes.size();
         }catch (IllegalArgumentException e){
             System.out.println("Um erro aconteceu, tente novamente");
             System.out.println(e.getMessage());
@@ -134,27 +133,53 @@ public class Filme{
     }
 
     //busca filme por nome
-    public static Filme buscaFilmeNome(String parteNome){
+    //melhorei esse metodo, olha no do cliente pra ver as anotaçoes bonitinhas
+    public static ArrayList<Filme> buscaFilmeNome(String parteNome){
+        ArrayList<Filme> filmesEncontrados = new ArrayList<>();
         Filme filmeProcurado = new Filme();
+        boolean foiAchado = false;
+
+
         parteNome = parteNome.toLowerCase();
+
         for(Filme f: listFilmes){
-            if(f.getTitulo().toLowerCase().contains(parteNome)){
+            if(f.getDescricao().toLowerCase().contains(parteNome)){
                 filmeProcurado = f;
+                filmesEncontrados.add(filmeProcurado);
+                foiAchado = true;
             }
         }
-        return filmeProcurado;
+
+        if (foiAchado) {
+            return filmesEncontrados;
+        } else {
+            return null;
+        }
     }
 
     //busca filme por descricao
-    public static Filme buscaFilmeDesc(String parteDesc){
-        Filme filmeProcurado  = new Filme();;
+    //melhorei esse metodo, olha no do cliente pra ver as anotaçoes bonitinhas
+    public static ArrayList<Filme> buscaFilmeDesc(String parteDesc){
+        ArrayList<Filme> filmesEncontrados = new ArrayList<>();
+        Filme filmeProcurado = new Filme();
+        boolean foiAchado = false;
+
+
         parteDesc = parteDesc.toLowerCase();
+
         for(Filme f: listFilmes){
             if(f.getDescricao().toLowerCase().contains(parteDesc)){
                 filmeProcurado = f;
+                filmesEncontrados.add(filmeProcurado);
+                foiAchado = true;
             }
         }
-        return filmeProcurado;
+
+        if (foiAchado) {
+            return filmesEncontrados;
+        } else {
+            return null;
+        }
     }
 
     //busca filme mais barato
@@ -208,15 +233,19 @@ public class Filme{
     //busca filme por codigo
     public static Filme buscaFilmeCodigo(int codigo){
         Filme filmeProcurado = new Filme();
+        boolean foiAchado = false;
+
         for(Filme f: listFilmes){
-            if(f.getCodigo()==codigo){
+            if(f.getCodigo() == codigo){
                 filmeProcurado = f;
+                foiAchado = true;
             }
         }
-        if(filmeProcurado == null){
-            System.out.printf("Filme não encontrado");
+        if(foiAchado){
+            return filmeProcurado;
+        } else {
+            return null;
         }
-         return filmeProcurado;
     }
 
 

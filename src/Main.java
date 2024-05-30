@@ -46,22 +46,22 @@ public class Main {
         Funcionario f8 = new Funcionario("Roberto", 37, 2002002008, 1600, "robertof@empresa.br", "Rua H", 19989008);
 
         //cadastrando filmes p nao nos matarmos
-        Filme.cadastrarFilme("Titanic", 1, 195, 15.0, "Drama/Romance");
-        Filme.cadastrarFilme("Matrix", 2, 136, 12.5, "Ficção Científica/Ação");
-        Filme.cadastrarFilme("O Poderoso Chefão", 3, 175, 18.0, "Crime/Drama");
-        Filme.cadastrarFilme("Interestelar", 4, 169, 14.0, "Ficção Científica/Aventura");
-        Filme.cadastrarFilme("Harry Potter e a Pedra Filosofal", 5, 152, 10.0, "Fantasia/Aventura");
-        Filme.cadastrarFilme("Senhor dos Anéis: A Sociedade do Anel", 6, 178, 13.5, "Fantasia/Aventura");
-        Filme.cadastrarFilme("Vingadores: Ultimato", 7, 181, 20.0, "Ação/Ficção Científica");
-        Filme.cadastrarFilme("Pantera Negra", 8, 134, 18.0, "Ação/Aventura");
-        Filme.cadastrarFilme("Frozen II", 9, 103, 15.0, "Animação/Aventura");
-        Filme.cadastrarFilme("Joker", 10, 122, 16.0, "Drama/Thriller");
-        Filme.cadastrarFilme("Toy Story 4", 11, 100, 14.0, "Animação/Comédia");
-        Filme.cadastrarFilme("O Rei Leão", 12, 118, 17.0, "Animação/Aventura");
-        Filme.cadastrarFilme("A Origem", 13, 148, 16.0, "Ação/Ficção Científica");
-        Filme.cadastrarFilme("O Senhor dos Anéis: O Retorno do Rei", 14, 201, 18.0, "Fantasia/Aventura");
-        Filme.cadastrarFilme("Homem-Aranha: Longe de Casa", 15, 129, 19.0, "Ação/Aventura");
-        Filme.cadastrarFilme("Forrest Gump", 16, 142, 12.0, "Drama/Romance");
+        Filme fi1 = new Filme("Titanic", 1, 195, 15.0, "Drama/Romance");
+        Filme fi2 = new Filme("Matrix", 2, 136, 12.5, "Ficção Científica/Ação");
+        Filme fi3 = new Filme("O Poderoso Chefão", 3, 175, 18.0, "Crime/Drama");
+        Filme fi4 = new Filme("Interestelar", 4, 169, 14.0, "Ficção Científica/Aventura");
+        Filme fi5 = new Filme("Harry Potter e a Pedra Filosofal", 5, 152, 10.0, "Fantasia/Aventura");
+        Filme fi6 = new Filme("Senhor dos Anéis: A Sociedade do Anel", 6, 178, 13.5, "Fantasia/Aventura");
+        Filme fi7 = new Filme("Vingadores: Ultimato", 7, 181, 20.0, "Ação/Ficção Científica");
+        Filme fi8 = new Filme("Pantera Negra", 8, 134, 18.0, "Ação/Aventura");
+        Filme fi9 = new Filme("Frozen II", 9, 103, 15.0, "Animação/Aventura");
+        Filme f10 = new Filme("Joker", 10, 122, 16.0, "Drama/Thriller");
+        Filme f111 = new Filme("Toy Story 4", 11, 100, 14.0, "Animação/Comédia");
+        Filme fi12 = new Filme("O Rei Leão", 12, 118, 17.0, "Animação/Aventura");
+        Filme fi13 = new Filme("A Origem", 13, 148, 16.0, "Ação/Ficção Científica");
+        Filme fi14 = new Filme("O Senhor dos Anéis: O Retorno do Rei", 14, 201, 18.0, "Fantasia/Aventura");
+        Filme fi15 = new Filme("Homem-Aranha: Longe de Casa", 15, 129, 19.0, "Ação/Aventura");
+        Filme fi16 = new Filme("Forrest Gump", 16, 142, 12.0, "Drama/Romance");
 
 
         Main o = new Main(); //instancia necessatia para usar metodos da classe main
@@ -128,32 +128,42 @@ public class Main {
 
                         switch (escolhaBusca) {
                             case 1:
-                                int escolha2 = -1;
+                                int escolha1 = -1;
 
-                                while (escolha2 != 0) {
+                                while (escolha1 != 0) {
                                     System.out.println("\n----------------------------------------------------\n");
                                     System.out.println("                   Busca de Clientes\n");
                                     System.out.println(" 1 : Busca por Nome");
-                                    System.out.println(" 0 : Voltar");
+                                    System.out.println(" 0 : Voltar\n");
 
 
                                     //mesma validaçao de la em cima
                                     if (input.hasNextInt()) {
-                                        escolha2 = input.nextInt();
+                                        escolha1 = input.nextInt();
                                     } else {
-                                        escolhaBusca = -1;
+                                        escolha1= -1;
                                         input.nextLine();
                                     }
 
-                                    switch (escolha) {
+                                    switch (escolha1) {
                                         case 1:
                                             try {
-                                                System.out.println("Digite um nome... ");
+                                                System.out.println("\nDigite um nome... ");
+                                                input.nextLine();//magica
                                                 String palavra = input.nextLine();
-                                                Cliente cliente = Cliente.buscaClienteNome(palavra);
-                                                System.out.println("Resultados encontrados: ");
-                                                cliente.exibir();
 
+                                                ArrayList<Cliente> clientesEncontrados = Cliente.buscaClienteNome(palavra);
+
+                                                System.out.println("\nResultados encontrados: \n");
+
+                                                if (clientesEncontrados == null) {
+                                                    System.out.println("Nenhum cliente com este nome foi encontrado");
+                                                } else {
+                                                    for (Cliente c : clientesEncontrados) {
+                                                        c.exibir();
+                                                        System.out.println(" ");
+                                                    }
+                                                }
                                             } catch (Exception e) {
                                                 System.out.println("Erro");
                                             }
@@ -169,34 +179,44 @@ public class Main {
                                 }
                                 break;
                             case 2:
-                                System.out.println("busca de funcionarios");
-                                int escolha3 = -1;
+                                int escolha2 = -1;
 
-                                while (escolha3 != 0) {
+                                while (escolha2 != 0) {
                                     System.out.println("\n----------------------------------------------------\n");
                                     System.out.println("                   Busca de Funcionários\n");
                                     System.out.println(" 1 : Busca por Nome");
-                                    System.out.println(" 0 : Voltar");
+                                    System.out.println(" 0 : Voltar\n");
 
 
                                     //mesma validaçao de la em cima
                                     if (input.hasNextInt()) {
-                                        escolha3 = input.nextInt();
+                                        escolha2 = input.nextInt();
                                     } else {
-                                        escolhaBusca = -1;
+                                        escolha2 = -1;
                                         input.nextLine();
                                     }
 
                                     //Mano eu criei tudo "certinho" os metodos nas classe pra filtrar e tal mas acho q algo ta dando ruim e nao sei oq eh, se conseguir conserta
+                                    //o erro era pq ele tava lendo o input errado, tinha q colocar input.NextLine() antes de coisar a variavel
                                     switch (escolha) {
                                         case 1:
                                             try {
-                                                System.out.println("Digite um nome... ");
+                                                System.out.println("\nDigite um nome... ");
+                                                input.nextLine();//magica
                                                 String palavra = input.nextLine();
-                                                Funcionario funcionario = Funcionario.buscaFuncionarioNome(palavra);
-                                                System.out.println("Resultados encontrados: ");
-                                                funcionario.exibir();
 
+                                                ArrayList<Funcionario> funcionariosEncontrados = Funcionario.buscaFuncionarioNome(palavra);
+
+                                                System.out.println("\nResultados encontrados: \n");
+
+                                                if (funcionariosEncontrados == null) {
+                                                    System.out.println("Nenhum funcionario com este nome foi encontrado");
+                                                } else {
+                                                    for (Funcionario f : funcionariosEncontrados) {
+                                                        f.exibir();
+                                                        System.out.println(" ");
+                                                    }
+                                                }
                                             } catch (Exception e) {
                                                 System.out.println("Erro");
                                             }
@@ -213,43 +233,165 @@ public class Main {
                                 }
                                 break;
                             case 3:
+                                int escolha3 = -1;
 
-                                System.out.println("filmes por descricao");
-                                try {
-                                    System.out.println("Digite a descrição... ");
-                                    String palavra = input.nextLine();
-                                    Filme filme = Filme.buscaFilmeDesc(palavra);
-                                    System.out.println("Resultados encontrados: ");
-                                    filme.exibir();
+                                while (escolha3 != 0) {
+                                    System.out.println("\n----------------------------------------------------\n");
+                                    System.out.println("                   Busca de Filmes\n");
+                                    System.out.println(" 1 : Busca por Descrição");
+                                    System.out.println(" 0 : Voltar\n");
 
-                                } catch (Exception e) {
-                                    System.out.println("Erro");
+
+                                    //mesma validaçao de la em cima
+                                    if (input.hasNextInt()) {
+                                        escolha3 = input.nextInt();
+                                    } else {
+                                        escolha3 = -1;
+                                        input.nextLine();
+                                    }
+
+                                    //Mano eu criei tudo "certinho" os metodos nas classe pra filtrar e tal mas acho q algo ta dando ruim e nao sei oq eh, se conseguir conserta
+                                    //o erro era pq ele tava lendo o input errado, tinha q colocar input.NextLine() antes de coisar a variavel
+                                    switch (escolha3) {
+                                        case 1:
+                                            try {
+                                                System.out.println("Digite a descrição... ");
+                                                input.nextLine();//magica
+                                                String descricao = input.nextLine();
+
+                                                ArrayList<Filme> filmesEncontrados = Filme.buscaFilmeDesc(descricao);
+
+                                                System.out.println("\nResultados encontrados: \n");
+
+                                                if (filmesEncontrados == null) {
+                                                    System.out.println("Nenhum filme com esta descrição foi encontrado");
+                                                } else {
+                                                    for (Filme f : filmesEncontrados) {
+                                                        f.exibir();
+                                                        System.out.println(" ");
+                                                    }
+                                                }
+                                            } catch (Exception e) {
+                                                System.out.println("Erro");
+                                            }
+                                            break;
+                                        case 0:
+                                            System.out.println("\nVoltando ao menu...");
+                                            System.out.println("\n----------------------------------------------------\n");
+                                            break;
+
+                                        default:
+                                            System.out.println("Escolha Inválida");
+                                            break;
+                                    }
                                 }
                                 break;
                             case 4:
-                                System.out.println("filmes por titulo");
-                                try {
-                                    System.out.println("Digite o título do filme... ");
-                                    String palavra = input.nextLine();
-                                    Filme filme = Filme.buscaFilmeNome(palavra);
-                                    System.out.println("Resultados encontrados: ");
-                                    filme.exibir();
+                                int escolha4 = -1;
 
-                                } catch (Exception e) {
-                                    System.out.println("Erro");
+                                while (escolha4 != 0) {
+                                    System.out.println("\n----------------------------------------------------\n");
+                                    System.out.println("                   Busca de Filmes\n");
+                                    System.out.println(" 1 : Busca por Nome");
+                                    System.out.println(" 0 : Voltar\n");
+
+
+                                    //mesma validaçao de la em cima
+                                    if (input.hasNextInt()) {
+                                        escolha4 = input.nextInt();
+                                    } else {
+                                        escolha4 = -1;
+                                        input.nextLine();
+                                    }
+
+                                    //Mano eu criei tudo "certinho" os metodos nas classe pra filtrar e tal mas acho q algo ta dando ruim e nao sei oq eh, se conseguir conserta
+                                    //o erro era pq ele tava lendo o input errado, tinha q colocar input.NextLine() antes de coisar a variavel
+                                    switch (escolha4) {
+                                        case 1:
+                                            try {
+                                                System.out.println("Digite o nome... ");
+                                                input.nextLine();//magica
+                                                String nome = input.nextLine();
+
+                                                ArrayList<Filme> filmesEncontrados = Filme.buscaFilmeNome(nome);
+
+                                                System.out.println("\nResultados encontrados: \n");
+
+                                                if (filmesEncontrados == null) {
+                                                    System.out.println("Nenhum filme com este nome foi encontrado");
+                                                } else {
+                                                    for (Filme f : filmesEncontrados) {
+                                                        f.exibir();
+                                                        System.out.println(" ");
+                                                    }
+                                                }
+                                            } catch (Exception e) {
+                                                System.out.println("Erro");
+                                            }
+                                            break;
+                                        case 0:
+                                            System.out.println("\nVoltando ao menu...");
+                                            System.out.println("\n----------------------------------------------------\n");
+                                            break;
+                                        default:
+                                            System.out.println("Escolha Inválida");
+                                            break;
+                                    }
                                 }
                                 break;
                             case 5:
-                                System.out.println("filmes por codigo");
-                                try {
-                                    System.out.println("Digite o código do filme... ");
-                                    int codigo = input.nextInt();
-                                    Filme filme = Filme.buscaFilmeCodigo(codigo);
-                                    System.out.println("Resultados encontrados: ");
-                                    filme.exibir();
+                                int escolha5 = -1;
 
-                                } catch (Exception e) {
-                                    System.out.println("Erro");
+                                //isso continua dando erro e eu não sei porqueeeeeeeee aaaaaaaaaaaaa
+                                //eu desisti dps de um tempo, vê se vc consegue
+                                while (escolha5 != 0){
+                                    System.out.println("\n----------------------------------------------------\n");
+                                    System.out.println("                   Busca de Filmes\n");
+                                    System.out.println(" 1 : Busca por Código");
+                                    System.out.println(" 0 : Voltar\n");
+
+                                    //mesma validaçao de la em cima
+                                    if (input.hasNextInt()) {
+                                        escolha5 = input.nextInt();
+                                        input.nextLine();
+                                    } else {
+                                        escolha5 = -1;
+                                        input.nextLine();
+                                    }
+
+                                    switch (escolha5){
+                                        case 1:
+                                            try {
+                                                int codigo = -1;
+                                                System.out.println("\nDigite o código do filme... ");
+
+                                                if(input.hasNextInt()) {
+                                                    codigo = input.nextInt();
+                                                } else {
+                                                    System.out.println("\nCodigo tem que ser numerico");
+                                                    input.nextLine();
+                                                }
+
+                                                Filme filmeEncontrado = Filme.buscaFilmeCodigo(codigo);
+
+                                                System.out.println("\nResultados encontrados: \n");
+
+                                                if (filmeEncontrado == null) {
+                                                    System.out.println("Nenhum filme com este código foi encontrado");
+                                                } else {
+                                                    filmeEncontrado.exibir();
+                                                }
+                                            } catch (Exception e) {
+                                                System.out.println("Erro");
+                                            }
+                                        case 0:
+                                            System.out.println("\nVoltando ao menu...");
+                                            System.out.println("\n----------------------------------------------------\n");
+                                            break;
+                                        default:
+                                            System.out.println("Escolha Inválida");
+                                            break;
+                                    }
                                 }
                                 break;
                             case 0:
@@ -281,7 +423,7 @@ public class Main {
                         if (input.hasNextInt()) {
                             escolhaIdade = input.nextInt();
                         }else{
-                            escolhaBusca = -1;
+                            escolhaIdade = -1;
                             input.nextLine();
                         }
 
@@ -389,6 +531,7 @@ public class Main {
                     }
                     break;
                     // esse case 4 da uma verificada se ta passando algum tipo de variavel anormal no scan, n conferi
+                    //eu vou mudei ele pq começou a dar uns errinhos sem graça, mas ele verifica quase tudo sim
                 case 4:
                     int escolhaPessoa = -1;
 
@@ -412,10 +555,11 @@ public class Main {
                                 System.out.println("\n----------------------------------------------------\n");
                                 System.out.println("                  Cadastro de clientes\n");
                                 o.cadastroVariaveisCliente();
-                                System.out.println("\n----------------------------------------------------\n");
                                 break;
                             case 2:
-                                System.out.println(" ");
+                                System.out.println("\n----------------------------------------------------\n");
+                                System.out.println("                Cadastro de funcionarios\n");
+                                o.cadastroVariaveisFuncionario();
                                 break;
                             case 0:
                                 System.out.println("\nVoltando ao menu...");
@@ -445,6 +589,81 @@ public class Main {
         }
     }
 
+    public void cadastroVariaveisFuncionario(){
+        Funcionario funcionario = new Funcionario();
+        Scanner variaveis2 = new Scanner(System.in);
+
+        //to com preguiça de explicar isso, eu acretido na sua capacidade de entender vih
+        //eu mudei o metodo de cadastrar cliente pra isso, mas n mudei os de funcionario etc
+
+        String nome = "abcde";
+        while(!nome.equals(funcionario.getNome())){
+            System.out.println("insira nome: ");
+            nome = variaveis2.nextLine();
+            funcionario.setNome(nome);
+        }
+
+        String endereco = "abcde";
+        while(!endereco.equals(funcionario.getEndereco())){
+            System.out.println("insira endereço: ");
+            endereco = variaveis2.nextLine();
+            funcionario.setEndereco(endereco);
+        }
+
+        String email = "abcde";
+        while(!email.equals(funcionario.getEmail())){
+            System.out.println("insira email: ");
+            nome = variaveis2.nextLine();
+            funcionario.setEmail(email);
+        }
+
+        int idade = -1;
+        while(idade == -1){
+            System.out.println("insira idade: ");
+            if(variaveis2.hasNextInt()){
+                idade = variaveis2.nextInt();
+                funcionario.setIdade(idade);
+            } else {
+                variaveis2.next();
+            }
+        }
+
+        long cpf = -1;
+        while(cpf == -1){
+            System.out.println("insira cpf: ");
+            if(variaveis2.hasNextLong()){
+                cpf = variaveis2.nextLong();
+                funcionario.setCpf(cpf);
+            } else {
+                variaveis2.next();
+            }
+        }
+
+        long telefone = -1;
+        while(telefone == -1){
+            System.out.println("insira telefone: ");
+            if(variaveis2.hasNextLong()){
+                telefone = variaveis2.nextLong();
+                funcionario.setTelefone(telefone);
+            } else {
+                variaveis2.next();
+            }
+        }
+
+        double salario = -1;
+        while(salario == -1){
+            System.out.println("insira salario: ");
+            if(variaveis2.hasNextDouble()){
+                salario = variaveis2.nextDouble();
+                funcionario.setSalario(salario);
+            } else {
+                variaveis2.next();
+            }
+        }
+
+        Funcionario.cadastrarFuncionario(funcionario);
+    }
+
     public void cadastroVariaveisCliente(){
         Cliente cliente = new Cliente();
         Scanner variaveis = new Scanner(System.in);
@@ -453,42 +672,24 @@ public class Main {
         //eu mudei o metodo de cadastrar cliente pra isso, mas n mudei os de funcionario etc
 
         String nome = "abcde";
-        while(nome.equals("abcde")){
+        while(!nome.equals(cliente.getNome())){
             System.out.println("insira nome: ");
-            if(variaveis.hasNext("[1234567890]")){
-                System.out.println("amiginho isso não é seu nome não");
-                variaveis.next();
-                continue;
-            }else if(variaveis.hasNextLine()){
-                nome = variaveis.nextLine();
-                cliente.setNome(nome);
-            }
+            nome = variaveis.nextLine();
+            cliente.setNome(nome);
         }
 
         String endereco = "abcde";
-        while(endereco.equals("abcde")){
-            System.out.println("insira endereco: ");
-            if(variaveis.hasNext("[1234567890]")){
-                System.out.println("amiginho isso não é seu endereco não");
-                variaveis.next();
-                continue;
-            }else if(variaveis.hasNextLine()){
-                endereco = variaveis.nextLine();
-                cliente.setEndereco(endereco);
-            }
+        while(!endereco.equals(cliente.getEndereco())){
+            System.out.println("insira endereço: ");
+            endereco = variaveis.nextLine();
+            cliente.setEndereco(endereco);
         }
 
         String email = "abcde";
-        while(email.equals("abcde")){
+        while(!email.equals(cliente.getEmail())){
             System.out.println("insira email: ");
-            if(variaveis.hasNext("[1234567890]")){
-                System.out.println("amiginho isso não é seu email não");
-                variaveis.next();
-                continue;
-            }else if(variaveis.hasNextLine()){
-                email = variaveis.nextLine();
-                cliente.setEmail(email);
-            }
+            email = variaveis.nextLine();
+            cliente.setEmail(email);
         }
 
         int idade = -1;

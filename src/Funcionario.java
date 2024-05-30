@@ -16,6 +16,21 @@ public class Funcionario extends Pessoa implements IPessoa
 
     private static ArrayList<Funcionario> listFuncionarios = new ArrayList<>();
 
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+            int i =  Integer.parseInt(strNum);
+            float f = Float.parseFloat(strNum);
+            long l = Long.parseLong(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
     //Getters e setters
 
     public String getNome() {
@@ -26,6 +41,8 @@ public class Funcionario extends Pessoa implements IPessoa
         //FEITO TRATAMENTO DE EXCECOES
         if(nome.isEmpty()){
             throw new IllegalArgumentException("Nome precisa ser preenchido");
+        } else if (isNumeric(nome)) {
+            System.out.println("é um numero irmao");
         } else{
             this.nome = nome;
         }
@@ -133,12 +150,11 @@ public class Funcionario extends Pessoa implements IPessoa
         System.out.println(this.getEndereco());
     }
 
-    public static void cadastrarFuncionario(String nome, int idade, int cpf, double salario, String email, String endereco, int telefone) {
+    public static void cadastrarFuncionario(Funcionario funcionario) {
         try{
-            Funcionario funcionario = new Funcionario(nome,idade,cpf,salario,email,endereco,telefone);
             listFuncionarios.add(funcionario);
             Funcionario.contadorF++;
-        }catch (IllegalArgumentException e){
+        }catch (Exception e){
             System.out.println("Um erro aconteceu, tente novamente");
             System.out.println(e.getMessage());
         }
@@ -162,14 +178,27 @@ public class Funcionario extends Pessoa implements IPessoa
     }
 
     //busca funcionario por nome
-    public static Funcionario buscaFuncionarioNome(String parteNome){
+    //melhorei esse metodo, olha no do cliente pra ver as anotaçoes bonitinhas
+    public static ArrayList<Funcionario> buscaFuncionarioNome(String parteNome){
+        ArrayList<Funcionario> funcionariosEncontrados = new ArrayList<>();
         Funcionario funcionarioProcurado = new Funcionario();
+        boolean foiAchado = false;
+
+
         parteNome = parteNome.toLowerCase();
-        for(Funcionario f: listFuncionarios) {
-            if (f.getNome().toLowerCase().contains(parteNome)) {
+
+        for(Funcionario f: listFuncionarios){
+            if(f.getNome().toLowerCase().contains(parteNome)){
                 funcionarioProcurado = f;
+                funcionariosEncontrados.add(funcionarioProcurado);
+                foiAchado = true;
             }
         }
-        return funcionarioProcurado;
+
+        if (foiAchado) {
+            return funcionariosEncontrados;
+        } else {
+            return null;
+        }
     }
 }

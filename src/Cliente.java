@@ -49,22 +49,30 @@ public class Cliente extends Pessoa implements IPessoa{
         return true;
     }
 
-    //busca cliente com menor idade
-    public static Cliente buscaClienteMenorIdade(){
+    //busca cliente com maior idade
+    //esse metodo tava com uns erros, mas eu consertei
+    //acho q vc trocou o nome dele com o de menor idade sem qrer
+    //e eu achei mto bom pq eu fui testar e apareceu q a cliente mais velha era a Marina de 12 anos
+    public static Cliente buscaClienteMaiorIdade(){
         int maiorIdade=0;
-        Cliente clienteMaisVelho;
-        for(Cliente c: listClientes){
+        Cliente clienteMaisVelho = new Cliente();
+
+        if (listClientes == null || listClientes.isEmpty()) {
+            return null; // ou lançar uma exceção se preferir
+        }
+
+        for(Cliente c : listClientes){
             if(c.getIdade()>=maiorIdade){
                 maiorIdade=c.getIdade();
                 clienteMaisVelho=c;
             }
         }
-        clienteMaisVelho = new Cliente();
+
         return clienteMaisVelho;
     }
 
-    //busca cliente com maior idade
-    public static Cliente buscaClienteMaiorIdade(){
+    //busca cliente com menor idade
+    public static Cliente buscaClienteMenorIdade(){
         int menorIdade= listClientes.get(0).getIdade();
         Cliente clienteMaisNovo = new Cliente();
 
@@ -83,21 +91,28 @@ public class Cliente extends Pessoa implements IPessoa{
     }
 
     //busca cliente por nome
-    public static Cliente buscaClienteNome(String parteNome){
-        Cliente clienteProcurado;
+    //eu adicionei o foi achado pra caso n acharem nada
+    //esse aqui tava com o msm erro do de buscaClienteMaiorIdade
+    //no lugar de retornar só um cliente eu vou fazer um array, desse jeito ele retorna varios
+    public static ArrayList<Cliente> buscaClienteNome(String parteNome){
+        ArrayList<Cliente> clientesEncontrados = new ArrayList<>();
+        Cliente clienteProcurado = new Cliente();
         boolean foiAchado = false;
+
+
         parteNome = parteNome.toLowerCase();
+
         for(Cliente c: listClientes){
             if(c.getNome().toLowerCase().contains(parteNome)){
                 clienteProcurado = c;
+                clientesEncontrados.add(clienteProcurado);
                 foiAchado = true;
             }
         }
+
         if (foiAchado) {
-            clienteProcurado = new Cliente();
-            return clienteProcurado;
+            return clientesEncontrados;
         } else {
-            System.out.println("Nenhum cliente com este nome foi encontrado");
             return null;
         }
     }
@@ -140,6 +155,7 @@ public class Cliente extends Pessoa implements IPessoa{
             listClientes.add(cliente);
             //troquei pra .size
             Cliente.contadorC=listClientes.size();
+            System.out.println("Cliente cadastrado com sucesso!");
         }catch (IllegalArgumentException e){
             System.out.println("Um erro aconteceu, tente novamente");
             System.out.println(e.getMessage());
@@ -187,18 +203,23 @@ public class Cliente extends Pessoa implements IPessoa{
     //Getters e Setters:
 
     //todos ja estao com tratamento de execoes
+    //eu mudei todos os tratamentos aqui pra oq eu te falei n wpp, pq fica melhor na hr do cadastro
 
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
-        if(nome.isEmpty()){
-            throw new IllegalArgumentException("Nome precisa ser preenchido");
+        if(nome.isBlank()){
+            System.out.println("Nome precisa ser preenchido");
         } else if (isNumeric(nome)){
-            throw new IllegalArgumentException("Nome não pode ser numero");
+            System.out.println("Nome não pode ser numero");
         } else {
-            this.nome = nome;
+            try{
+                this.nome = nome;
+            } catch (Exception e){
+                System.out.println("Um erro inesperado aconteceu, tente novamente ");
+            }
         }
     }
 
@@ -208,9 +229,13 @@ public class Cliente extends Pessoa implements IPessoa{
 
     public void setIdade(int idade) {
         if(idade==0 | idade<0){
-            throw new IllegalArgumentException("Idade precisa ser maior ou diferente de zero");
-        } else{
-            this.idade = idade;
+            System.out.println("Idade precisa ser maior ou diferente de zero");
+        }else{
+            try{
+                this.idade = idade;
+            } catch (Exception e){
+                System.out.println("Um erro inesperado aconteceu, tente novamente ");
+            }
         }
     }
 
@@ -220,9 +245,13 @@ public class Cliente extends Pessoa implements IPessoa{
 
     public void setCpf(long cpf) {
         if(cpf==0 | cpf<0){
-            throw new IllegalArgumentException("Cpf precisa ser maior ou diferente de zero");
+            System.out.println("Cpf precisa ser maior ou diferente de zero");
         } else {
-            this.cpf = cpf;
+            try{
+                this.cpf = cpf;
+            } catch (Exception e){
+                System.out.println("Um erro inesperado aconteceu, tente novamente ");
+            }
         }
     }
 
@@ -232,9 +261,13 @@ public class Cliente extends Pessoa implements IPessoa{
 
     public void setContadorFilmesAlugados(int contadorFilmesAlugados) {
         if(contadorFilmesAlugados<0){
-            throw new IllegalArgumentException("Contador precisa ser maior ou igual a zero");
+            System.out.println("Contador precisa ser maior ou igual a zero");
         } else {
-            this.contadorFilmesAlugados = contadorFilmesAlugados;
+            try{
+                this.contadorFilmesAlugados = contadorFilmesAlugados;
+            } catch (Exception e){
+                System.out.println("Um erro inesperado aconteceu, tente novamente ");
+            }
         }
     }
 
@@ -244,9 +277,13 @@ public class Cliente extends Pessoa implements IPessoa{
 
     public static void setContadorC(int contadorC) {
         if(contadorC<0){
-            throw new IllegalArgumentException("Contador precisa ser maior ou igual a zero");
+            System.out.println("Contador precisa ser maior ou igual a zero");
         } else {
-            Cliente.contadorC = contadorC;
+            try{
+                Cliente.contadorC = contadorC;
+            } catch (Exception e){
+                System.out.println("Um erro inesperado aconteceu, tente novamente ");
+            }
         }
     }
 
@@ -256,9 +293,13 @@ public class Cliente extends Pessoa implements IPessoa{
 
     public void setTelefone(long telefone) {
         if(telefone==0 | telefone<0){
-            throw new IllegalArgumentException("Telefone precisa ser maior ou  diferente de zero");
+            System.out.println("Telefone precisa ser maior ou  diferente de zero");
         } else {
-            this.telefone = telefone;
+            try{
+                this.telefone = telefone;
+            } catch (Exception e){
+                System.out.println("Um erro inesperado aconteceu, tente novamente ");
+            }
         }
     }
 
@@ -268,11 +309,15 @@ public class Cliente extends Pessoa implements IPessoa{
 
     public void setEndereco(String endereco) {
         if(endereco.isEmpty()){
-            throw new IllegalArgumentException("Endereço precisa ser preenchido");
+            System.out.println("Endereço precisa ser preenchido");
         } else if (isNumeric(endereco)){
-            throw new IllegalArgumentException("Endereço não pode ser numero");
+            System.out.println("Endereço não pode ser numero");
         } else {
-            this.endereco = endereco;
+            try{
+                this.endereco = endereco;
+            } catch (Exception e){
+                System.out.println("Um erro inesperado aconteceu, tente novamente ");
+            }
         }
     }
 
@@ -283,15 +328,15 @@ public class Cliente extends Pessoa implements IPessoa{
     public void setEmail(String email) {
         if(email.isEmpty()){
             // tira esses throws
-            throw new IllegalArgumentException("Email precisa ser preenchido");
+            System.out.println("Email precisa ser preenchido");
         } else if (isNumeric(email)){
-            throw new IllegalArgumentException("Email não pode ser numero");
+            System.out.println("Email não pode ser numero");
         } else{
-            //try{
-            this.email = email;
-            //} catch (e){
-            //sout de cria
-            //}
+            try{
+                this.email = email;
+            } catch (Exception e){
+                System.out.println("Um erro inesperado aconteceu, tente novamente ");
+            }
         }
     }
 
