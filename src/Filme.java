@@ -18,10 +18,16 @@ public class Filme{
 
     public void setTitulo(String titulo) {
         //FEITO TRATAMENTO DE EXCECOES
-        if(titulo.isEmpty()){
-            throw new IllegalArgumentException("Titulo precisa ser preenchido");
-        } else{
-            this.titulo = titulo;
+        if(titulo.isBlank()){
+            System.out.println("Titulo precisa ser preenchido");
+        } else if (isNumeric(titulo)) {
+            System.out.println("Titulo não pode ser numerico");
+        }else{
+            try{
+                this.titulo = titulo;
+            } catch (Exception e){
+                System.out.println("Um erro inesperado aconteceu, tente novamente ");
+            }
         }
     }
 
@@ -32,9 +38,13 @@ public class Filme{
     public void setMinutos(int minutos) {
         //FEITO TRATAMENTO DE EXCECOES
         if(minutos<=0){
-            throw new IllegalArgumentException("Duracao em minutos nao pode ser negativo");
+            System.out.println("Minutos precisam ser maiores ou diferentes de zero");
         } else{
-            this.minutos = minutos;
+            try {
+                this.minutos = minutos;
+            } catch (Exception e){
+                System.out.println("Um erro inesperado aconteceu, tente novamente ");
+            }
         }
     }
 
@@ -43,11 +53,14 @@ public class Filme{
     }
 
     public void setCodigo(int codigo) {
-        //FEITO TRATAMENTO DE EXCECOES
-        if(codigo<0){
-            throw new IllegalArgumentException("Código não pode ser negativo");
+        if(codigo<=0){
+            System.out.println("Codigo precisa ser maior ou diferente de zero");
         } else{
-            this.codigo = codigo;
+            try {
+                this.codigo = codigo;
+            } catch (Exception e){
+                System.out.println("Um erro inesperado aconteceu, tente novamente ");
+            }
         }
     }
 
@@ -56,11 +69,14 @@ public class Filme{
     }
 
     public void setPreco(double preco) {
-        //FEITO TRATAMENTO DE EXCECOES
         if(preco<0){
-            throw new IllegalArgumentException("Preco não pode ser negativo");
-        } else{
-            this.preco= preco;
+            System.out.println("Preço precisa ser maior ou diferente de zero");
+        }else{
+            try{
+                this.preco = preco;
+            } catch (Exception e){
+                System.out.println("Um erro inesperado aconteceu, tente novamente ");
+            }
         }
     }
 
@@ -70,10 +86,16 @@ public class Filme{
 
     public void setDescricao(String descricao) {
         //FEITO TRATAMENTO DE EXCECOES
-        if(descricao.isEmpty()){
-            throw new IllegalArgumentException("Titulo precisa ser preenchido");
-        } else{
-            this.descricao = descricao;
+        if(descricao.isBlank()){
+            System.out.println("Descrição precisa ser preenchida");
+        } else if (isNumeric(descricao)) {
+            System.out.println("Descrição não pode ser numerica");
+        }else{
+            try{
+                this.descricao = descricao;
+            } catch (Exception e){
+                System.out.println("Um erro inesperado aconteceu, tente novamente ");
+            }
         }
     }
 
@@ -96,6 +118,23 @@ public class Filme{
 
     public Filme() {
     }
+
+    //pra ajudar a validaçao de strings
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+            int i =  Integer.parseInt(strNum);
+            float f = Float.parseFloat(strNum);
+            long l = Long.parseLong(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
 
     public void exibir() {
         System.out.println("Titulo: " + this.getTitulo());

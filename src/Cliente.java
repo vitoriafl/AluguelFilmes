@@ -213,7 +213,7 @@ public class Cliente extends Pessoa implements IPessoa{
         if(nome.isBlank()){
             System.out.println("Nome precisa ser preenchido");
         } else if (isNumeric(nome)){
-            System.out.println("Nome não pode ser numero");
+            System.out.println("Nome não pode ser numerico");
         } else {
             try{
                 this.nome = nome;

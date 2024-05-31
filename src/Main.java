@@ -581,7 +581,7 @@ public class Main {
                     while (escolhaFilme != 0){
                         System.out.println("\n----------------------------------------------------\n");
                         System.out.println("                  Cadastro de filmes\n");
-                        System.out.println("   1 : Cadastrar clientes         0 : Voltar\n");
+                        System.out.println("   1 : Cadastrar filmes          0 : Voltar\n");
 
                         //mesma validaçao de la em cima
                         if (input.hasNextInt()) {
@@ -634,7 +634,7 @@ public class Main {
 
         String descricao = "abcde";
         while(!descricao.equals(filme.getDescricao())){
-            System.out.println("insira endereço: ");
+            System.out.println("insira descrição: ");
             descricao = variaveis3.nextLine();
             filme.setDescricao(descricao);
         }
