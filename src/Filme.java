@@ -47,7 +47,7 @@ public class Filme{
         if(codigo<0){
             throw new IllegalArgumentException("Código não pode ser negativo");
         } else{
-            this.minutos = minutos;
+            this.codigo = codigo;
         }
     }
 
@@ -98,10 +98,11 @@ public class Filme{
     }
 
     public void exibir() {
-        System.out.println(this.getTitulo());
-        System.out.println(this.getMinutos());
-        System.out.println(this.getCodigo());
-        System.out.println(this.getPreco());
+        System.out.println("Titulo: " + this.getTitulo());
+        System.out.println("Descrição: " + this.getDescricao());
+        System.out.println("Preço: " + this.getPreco());
+        System.out.println("Código: " + this.getCodigo());
+        System.out.println("Minutos: " + this.getMinutos());
     }
 
     public static void cadastrarFilme(Filme filme) {
@@ -109,6 +110,7 @@ public class Filme{
             //Filme filme = new Filme(titulo, minutos, codigo, preco, descricao);
             listFilmes.add(filme);
             Filme.contadorFilmes = listFilmes.size();
+            System.out.println("Filme cadastrado com sucesso");
         }catch (IllegalArgumentException e){
             System.out.println("Um erro aconteceu, tente novamente");
             System.out.println(e.getMessage());
@@ -122,7 +124,7 @@ public class Filme{
                 if(f.getCodigo() == codigo){
                     listFilmes.remove(f);
                     System.out.println("Cliente removido com sucesso");
-                    Filme.contadorFilmes--;
+                    Filme.contadorFilmes = listFilmes.size();
                     break;
                 }
             }
@@ -232,20 +234,15 @@ public class Filme{
 
     //busca filme por codigo
     public static Filme buscaFilmeCodigo(int codigo){
-        Filme filmeProcurado = new Filme();
-        boolean foiAchado = false;
 
-        for(Filme f: listFilmes){
-            if(f.getCodigo() == codigo){
-                filmeProcurado = f;
-                foiAchado = true;
+        for (Filme f : Filme.listFilmes){
+            if(codigo == f.getCodigo()){
+                Filme filmeProcurado = f;
+                System.out.println(codigo);
+                return filmeProcurado;
             }
         }
-        if(foiAchado){
-            return filmeProcurado;
-        } else {
-            return null;
-        }
+        return null;
     }
 
 

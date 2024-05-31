@@ -46,7 +46,7 @@ public class Main {
         Funcionario f8 = new Funcionario("Roberto", 37, 2002002008, 1600, "robertof@empresa.br", "Rua H", 19989008);
 
         //cadastrando filmes p nao nos matarmos
-        Filme fi1 = new Filme("Titanic", 1, 195, 15.0, "Drama/Romance");
+        Filme fi1 = new Filme("Titanic", 1,195, 15.0, "Drama/Romance");
         Filme fi2 = new Filme("Matrix", 2, 136, 12.5, "Ficção Científica/Ação");
         Filme fi3 = new Filme("O Poderoso Chefão", 3, 175, 18.0, "Crime/Drama");
         Filme fi4 = new Filme("Interestelar", 4, 169, 14.0, "Ficção Científica/Aventura");
@@ -344,6 +344,8 @@ public class Main {
 
                                 //isso continua dando erro e eu não sei porqueeeeeeeee aaaaaaaaaaaaa
                                 //eu desisti dps de um tempo, vê se vc consegue
+                                //EU DESCOBRI(demorou um dia inteiro)
+                                //Mas o erro era no setCodigo, ele tava com this.minutos = minutos, e n codigo, eu quase chorei
                                 while (escolha5 != 0){
                                     System.out.println("\n----------------------------------------------------\n");
                                     System.out.println("                   Busca de Filmes\n");
@@ -384,6 +386,7 @@ public class Main {
                                             } catch (Exception e) {
                                                 System.out.println("Erro");
                                             }
+                                            break;
                                         case 0:
                                             System.out.println("\nVoltando ao menu...");
                                             System.out.println("\n----------------------------------------------------\n");
@@ -573,8 +576,37 @@ public class Main {
                     break;
                     //mesma fita do caso 4
                 case 5:
-                    System.out.println("\n----------------------------------------------------\n");
-                    System.out.println("                  Cadastro de filmes\n");
+                    int escolhaFilme = -1;
+
+                    while (escolhaFilme != 0){
+                        System.out.println("\n----------------------------------------------------\n");
+                        System.out.println("                  Cadastro de filmes\n");
+                        System.out.println("   1 : Cadastrar clientes         0 : Voltar\n");
+
+                        //mesma validaçao de la em cima
+                        if (input.hasNextInt()) {
+                            escolhaFilme = input.nextInt();
+                        }
+                        else{
+                            escolhaFilme = -1;
+                            input.nextLine();
+                        }
+
+                        switch (escolhaFilme) {
+                            case 1:
+                                System.out.println("\n----------------------------------------------------\n");
+                                System.out.println("                  Cadastro de filmes\n");
+                                o.cadastroVariaveisFilmes();
+                                break;
+                            case 0:
+                                System.out.println("\nVoltando ao menu...");
+                                System.out.println("\n----------------------------------------------------\n");
+                                break;
+                            default:
+                                System.out.println("Escolha invalida");
+                                break;
+                        }
+                    }
                     break;
                 case 0:
                     System.out.println("\nSaindo...");
@@ -587,6 +619,60 @@ public class Main {
                     break;
             }
         }
+    }
+
+    public void cadastroVariaveisFilmes(){
+        Filme filme = new Filme();
+        Scanner variaveis3 = new Scanner(System.in);
+
+        String titulo = "abcde";
+        while(!titulo.equals(filme.getTitulo())){
+            System.out.println("insira titulo: ");
+            titulo = variaveis3.nextLine();
+            filme.setTitulo(titulo);
+        }
+
+        String descricao = "abcde";
+        while(!descricao.equals(filme.getDescricao())){
+            System.out.println("insira endereço: ");
+            descricao = variaveis3.nextLine();
+            filme.setDescricao(descricao);
+        }
+
+        int codigo = -1;
+        while(codigo == -1){
+            System.out.println("insira código: ");
+            if(variaveis3.hasNextInt()){
+                codigo = variaveis3.nextInt();
+                filme.setCodigo(codigo);
+            } else {
+                variaveis3.next();
+            }
+        }
+
+        int minutos = -1;
+        while(minutos == -1){
+            System.out.println("insira minutos: ");
+            if(variaveis3.hasNextInt()){
+                minutos = variaveis3.nextInt();
+                filme.setMinutos(minutos);
+            } else {
+                variaveis3.next();
+            }
+        }
+
+        double preco = -1;
+        while(preco == -1){
+            System.out.println("insira preco: ");
+            if(variaveis3.hasNextDouble()){
+                preco = variaveis3.nextDouble();
+                filme.setPreco(preco);
+            } else {
+                variaveis3.next();
+            }
+        }
+
+        Filme.cadastrarFilme(filme);
     }
 
     public void cadastroVariaveisFuncionario(){
