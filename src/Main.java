@@ -201,7 +201,8 @@ public class Main {
 
                                     //Mano eu criei tudo "certinho" os metodos nas classe pra filtrar e tal mas acho q algo ta dando ruim e nao sei oq eh, se conseguir conserta
                                     //o erro era pq ele tava lendo o input errado, tinha q colocar input.NextLine() antes de coisar a variavel
-                                    switch (escolha) {
+                                    switch (escolha2) {
+                                        //bem nessa variavel escolha2 do switch tava dando ruim pq tava escolha, aí nunca saía do case 1 pq escolha é 1 pra ta aq
                                         case 1:
                                             try {
                                                 System.out.println("\nDigite um nome... ");
@@ -295,7 +296,7 @@ public class Main {
                                 while (escolha4 != 0) {
                                     System.out.println("\n----------------------------------------------------\n");
                                     System.out.println("                   Busca de Filmes\n");
-                                    System.out.println(" 1 : Busca por Nome");
+                                    System.out.println(" 1 : Busca por nome do filme");
                                     System.out.println(" 0 : Voltar\n");
 
 
