@@ -52,7 +52,7 @@ public class Cliente extends Pessoa implements IPessoa{
     //busca cliente com maior idade
     //esse metodo tava com uns erros, mas eu consertei
     //acho q vc trocou o nome dele com o de menor idade sem qrer
-    //e eu achei mto bom pq eu fui testar e apareceu q a cliente mais velha era a Marina de 12 anos
+    //e eu achei mto bom pq eu fui testar e apareceu q a cliente mais velha era a Marina de 12 anos; kkkkkkkkk mano
     public static Cliente buscaClienteMaiorIdade(){
         int maiorIdade=0;
         Cliente clienteMaisVelho = new Cliente();

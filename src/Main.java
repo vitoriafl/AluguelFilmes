@@ -3,6 +3,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+
+
 public class Main {
     private static Scanner input =new Scanner(System.in);
     Cliente c = new Cliente();
@@ -202,7 +205,7 @@ public class Main {
                                         case 1:
                                             try {
                                                 System.out.println("\nDigite um nome... ");
-                                                input.nextLine();//magica
+                                                input.nextLine();//magica - uouu faz sentido
                                                 String palavra = input.nextLine();
 
                                                 ArrayList<Funcionario> funcionariosEncontrados = Funcionario.buscaFuncionarioNome(palavra);

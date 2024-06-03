@@ -133,6 +133,8 @@ public class Funcionario extends Pessoa implements IPessoa
         setEndereco(endereco);
         setEmail(email);
         setSalario(salario);
+        //cara aqui nao tava com o metodo de cadastro e por isso la na funçao busca tava dando null, minha cabeça vai explodir
+        cadastrarFuncionario(this);
     }
 
     public Funcionario() {

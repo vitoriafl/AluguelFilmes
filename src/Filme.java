@@ -175,6 +175,7 @@ public class Filme{
 
     //busca filme por nome
     //melhorei esse metodo, olha no do cliente pra ver as anotaçoes bonitinhas
+
     public static ArrayList<Filme> buscaFilmeNome(String parteNome){
         ArrayList<Filme> filmesEncontrados = new ArrayList<>();
         Filme filmeProcurado = new Filme();
@@ -184,7 +185,8 @@ public class Filme{
         parteNome = parteNome.toLowerCase();
 
         for(Filme f: listFilmes){
-            if(f.getDescricao().toLowerCase().contains(parteNome)){
+            //aqui tava tentando pegar o getDescricao aí n tava dando certo mas ta tudo joia agr
+            if(f.getTitulo().toLowerCase().contains(parteNome)){
                 filmeProcurado = f;
                 filmesEncontrados.add(filmeProcurado);
                 foiAchado = true;
