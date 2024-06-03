@@ -162,16 +162,20 @@ public class Funcionario extends Pessoa implements IPessoa
         }
     }
 
-    public static void removerFuncionario(int cpf){
-        //Esse metodo deu erro no da Maria, testar dps pra ver se no nosso da certo
+    public static void removerFuncionario(long cpf){
         try {
+            boolean foiRemovido = false;
             for(Funcionario f : listFuncionarios){
                 if(f.getCpf() == cpf ){
                     listFuncionarios.remove(f);
                     System.out.println("Funcionario removido com sucesso");
                     Funcionario.contadorF--;
+                    foiRemovido = true;
                     break;
                 }
+            }
+            if(!foiRemovido){
+                System.out.println("Funcionario com este cpf não foi achado");
             }
         }catch(IllegalArgumentException e){
             System.out.println("Um erro aconteceu, tente novamente");

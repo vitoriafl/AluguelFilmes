@@ -164,15 +164,19 @@ public class Cliente extends Pessoa implements IPessoa{
 
     //remove um cliente do array
     public static void removerCliente(long cpf){
-        //Esse metodo deu erro no da Maria, testar dps pra ver se no nosso da certo
         try {
+            boolean foiRemovido = false;
             for(Cliente C : Cliente.listClientes){
                 if(C.cpf == cpf){
                     Cliente.listClientes.remove(listClientes.indexOf(C));
                     System.out.println("Cliente removido com sucesso");
-                    Cliente.contadorC--;
+                    Cliente.contadorC = listClientes.size();
+                    foiRemovido = true;
                     break;
                 }
+            }
+            if(!foiRemovido){
+                System.out.println("Funcionario com este cpf não foi achado");
             }
         }catch(IllegalArgumentException e){
             System.out.println("Um erro aconteceu, tente novamente");

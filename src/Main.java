@@ -88,6 +88,8 @@ public class Main {
             System.out.println("               3 : Preço de produtos");
             System.out.println("               4 : Cadastrar pessoas");
             System.out.println("               5 : Cadastrar filmes");
+            System.out.println("               6 : Remover pessoas");
+            System.out.println("               7 : Remover filmes");
             System.out.println("               0 : Sair\n");
 
             //isso aqui serve como uma validaçao do input basicamente
@@ -601,6 +603,112 @@ public class Main {
                                 System.out.println("\n----------------------------------------------------\n");
                                 System.out.println("                  Cadastro de filmes\n");
                                 o.cadastroVariaveisFilmes();
+                                break;
+                            case 0:
+                                System.out.println("\nVoltando ao menu...");
+                                System.out.println("\n----------------------------------------------------\n");
+                                break;
+                            default:
+                                System.out.println("Escolha invalida");
+                                break;
+                        }
+                    }
+                    break;
+                case 6:
+                    int escolhaPessoaR = -1;
+
+                    while (escolhaPessoaR != 0){
+                        System.out.println("\n----------------------------------------------------\n");
+                        System.out.println("                  Remção de pessoas\n");
+                        System.out.println(" 1 : Remover clientes         2 : Remover Funncionarios\n");
+                        System.out.println("                    0 : Voltar\n");
+
+                        //mesma validaçao de la em cima
+                        if (input.hasNextInt()) {
+                            escolhaPessoaR = input.nextInt();
+                        }
+                        else{
+                            escolhaPessoaR = -1;
+                            input.nextLine();
+                        }
+
+                        switch (escolhaPessoaR) {
+                            case 1:
+                                System.out.println("\n----------------------------------------------------\n");
+                                System.out.println("                  Remoção de clientes\n");
+                                long Cpf = -1;
+                                while (Cpf == -1){
+                                System.out.println("Digite o cpf do cliente...");
+                                if (input.hasNextLong()) {
+                                    Cpf = input.nextLong();
+                                }
+                                else{
+                                    Cpf = -1;
+                                    input.nextLine();
+                                }}
+
+                                Cliente.removerCliente(Cpf);
+
+                                break;
+                            case 2:
+                                System.out.println("\n----------------------------------------------------\n");
+                                System.out.println("                Cadastro de funcionarios\n");
+                                long CpfF = -1;
+                                while (CpfF == -1){
+                                    System.out.println("Digite o cpf do funcionario...");
+                                    if (input.hasNextLong()) {
+                                        CpfF = input.nextLong();
+                                    }
+                                    else{
+                                        CpfF = -1;
+                                        input.nextLine();
+                                    }}
+
+                                Funcionario.removerFuncionario(CpfF);
+                                break;
+                            case 0:
+                                System.out.println("\nVoltando ao menu...");
+                                System.out.println("\n----------------------------------------------------\n");
+                                break;
+                            default:
+                                System.out.println("Escolha invalida");
+                                break;
+                        }
+                    }
+                    break;
+                //mesma fita do caso 4
+                case 7:
+                    int escolhaFilmeR = -1;
+
+                    while (escolhaFilmeR != 0){
+                        System.out.println("\n----------------------------------------------------\n");
+                        System.out.println("                  Remoção de filmes\n");
+                        System.out.println("   1 : Remover filmes          0 : Voltar\n");
+
+                        //mesma validaçao de la em cima
+                        if (input.hasNextInt()) {
+                            escolhaFilmeR = input.nextInt();
+                        }
+                        else{
+                            escolhaFilmeR = -1;
+                            input.nextLine();
+                        }
+
+                        switch (escolhaFilmeR) {
+                            case 1:
+                                System.out.println("\n----------------------------------------------------\n");
+                                System.out.println("                  Remoção de filmes\n");
+                                int Codigo = -1;
+                                while (Codigo == -1){
+                                    System.out.println("Digite o codigo do filme...");
+                                    if (input.hasNextInt()) {
+                                        Codigo = input.nextInt();
+                                    }
+                                    else{
+                                        Codigo = -1;
+                                        input.nextLine();
+                                    }}
+                                Filme.removerFilme(Codigo);
                                 break;
                             case 0:
                                 System.out.println("\nVoltando ao menu...");

@@ -157,15 +157,19 @@ public class Filme{
     }
 
     public static void removerFilme(int codigo){
-        //Esse metodo deu erro no da Maria, testar dps pra ver se no nosso da certo ; ok
         try {
+            boolean foiRemovido = false;
             for(Filme f: listFilmes){
                 if(f.getCodigo() == codigo){
                     listFilmes.remove(f);
-                    System.out.println("Cliente removido com sucesso");
+                    System.out.println("Filme removido com sucesso");
                     Filme.contadorFilmes = listFilmes.size();
+                    foiRemovido = true;
                     break;
                 }
+            }
+            if(!foiRemovido){
+                System.out.println("Filme com este codigo não foram achados");
             }
         }catch(IllegalArgumentException e){
             System.out.println("Um erro aconteceu, tente novamente");
