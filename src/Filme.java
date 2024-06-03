@@ -141,7 +141,7 @@ public class Filme{
         System.out.println("Descrição: " + this.getDescricao());
         System.out.println("Preço: " + this.getPreco());
         System.out.println("Código: " + this.getCodigo());
-        System.out.println("Minutos: " + this.getMinutos());
+        System.out.println("Duracao: " + this.getMinutos());
     }
 
     public static void cadastrarFilme(Filme filme) {

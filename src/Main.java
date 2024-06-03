@@ -547,7 +547,7 @@ public class Main {
                     while (escolhaPessoa != 0){
                         System.out.println("\n----------------------------------------------------\n");
                         System.out.println("                  Cadastro de pessoas\n");
-                        System.out.println(" 1 : Cadastrar clientes         2 : Cadastrar Funncionarios\n");
+                        System.out.println(" 1 : Cadastrar clientes         2 : Cadastrar Funcionarios\n");
                         System.out.println("                    0 : Voltar\n");
 
                         //mesma validaçao de la em cima
@@ -619,8 +619,8 @@ public class Main {
 
                     while (escolhaPessoaR != 0){
                         System.out.println("\n----------------------------------------------------\n");
-                        System.out.println("                  Remção de pessoas\n");
-                        System.out.println(" 1 : Remover clientes         2 : Remover Funncionarios\n");
+                        System.out.println("                  Remoção de pessoas\n");
+                        System.out.println(" 1 : Remover clientes         2 : Remover Funcionarios\n");
                         System.out.println("                    0 : Voltar\n");
 
                         //mesma validaçao de la em cima

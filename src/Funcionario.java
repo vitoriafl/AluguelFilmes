@@ -143,13 +143,13 @@ public class Funcionario extends Pessoa implements IPessoa
     //Metodos
     //Exibe os dados do funcionário
     public void exibir(){
-        System.out.println(this.getCpf());
-        System.out.println(this.getNome());
-        System.out.println(this.getIdade());
-        System.out.println(this.getSalario());
-        System.out.println(this.getTelefone());
-        System.out.println(this.getEmail());
-        System.out.println(this.getEndereco());
+        System.out.println("CPF: "+ this.getCpf());
+        System.out.println("Nome: "+this.getNome());
+        System.out.println("Idade: "+this.getIdade());
+        System.out.println("Salario: "+this.getSalario());
+        System.out.println("Telefone: "+this.getTelefone());
+        System.out.println("Email: "+this.getEmail());
+        System.out.println("Endereco: "+this.getEndereco());
     }
 
     public static void cadastrarFuncionario(Funcionario funcionario) {

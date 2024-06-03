@@ -187,7 +187,7 @@ public class Cliente extends Pessoa implements IPessoa{
     //exibe todos os dados do Cliente
     @Override
     public void exibir() {
-        System.out.println("Num de clientes: " + this.getCpf());
+        System.out.println("CPF: " + this.getCpf());
         System.out.println("Nome: " + this.getNome());
         System.out.println("Idade: " + this.getIdade());
         System.out.println("Endereço: " + this.getEndereco());
